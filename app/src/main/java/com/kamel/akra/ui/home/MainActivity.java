@@ -11,6 +11,7 @@ import com.kamel.akra.databinding.ActivityMainBinding;
 import com.kamel.akra.ui.Azkar.SwitchActivity;
 import com.kamel.akra.ui.ahadeth.AhadethActivity;
 import com.kamel.akra.ui.elmoshaf.ElmoshafActivity;
+import com.kamel.akra.ui.qablaWSebha.QablaWSebhaSwitch;
 import com.kamel.akra.ui.radio.RadioActivity;
 
 public class MainActivity extends BaseActivity {
@@ -39,6 +40,11 @@ public class MainActivity extends BaseActivity {
 
         binding.mainActivityBtnAzkar.setOnClickListener(view -> {
             Intent intent=new Intent(MainActivity.this, SwitchActivity.class);
+            startActivity(intent);
+        });
+
+        binding.mainActivtiyBtnElsabha.setOnClickListener(view -> {
+            Intent intent=new Intent(MainActivity.this, QablaWSebhaSwitch.class);
             startActivity(intent);
         });
     }

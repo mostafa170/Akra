@@ -10,9 +10,9 @@
     //main
     <string name="labal_main_activtiy_header_page">الرئيسية</string>
     <string name="labal_main_activty_elmoshf">المصحف</string>
-    <string name="labal_main_activity_elmoshf_listen">"تسميع القران "</string>
+    <string name="labal_main_activity_elmoshf_listen">"استماع للقران "</string>
     <string name="labal_main_activity_radio">محطة القران الكريم</string>
-    <string name="labal_main_activity_btn_ahdes">حديث</string>
+    <string name="labal_main_activity_btn_ahdes">احاديث</string>
     <string name="labal_main_activity_azkar">الاذكار</string>
     <string name="laba_main_activtiy_elsabha">القبلة و السبحة</string>
     //radio
@@ -33,6 +33,14 @@
     <string name="title_azkar">الاذكار</string>
     <string name="title_listan_azkar">تسميع الاذكار</string>
 
+    <string name="title_qabla">القبلة</string>
+    <string name="title_sebha">السبحة الالكترونية</string>
+    <string name="sebha_img">sebha Img</string>
+    <string name="refresh_icon">refresh icon</string>
+
+    <string name="tsbeh_sum">مجموع التسبيحات</string>
+    <string name="tsbeha">التسبيحة</string>
+
     ///
     <array name="tsbeh_array">
         <item>الحمد لله</item>
@@ -44,4 +52,11 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+    <string name="compass_dial" translatable="false">Compass Dial</string>
+    <string name="compass_hands" translatable="false">Compass Hands</string>
+
+    <string name="warning">warning</string>
+    <string name="message_request_location_permission">we need to access your location to show nearby coffe shops</string>
+
 </resources>
