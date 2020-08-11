@@ -16,7 +16,7 @@
     <string name="labal_main_activity_azkar">الاذكار</string>
     <string name="laba_main_activtiy_elsabha">القبلة و السبحة</string>
     //radio
-    <string name="labal_actovoty_radio_swipe">مرر يمن او شمال لاختر القناة</string>
+    <string name="labal_actovoty_radio_swipe">مرر يمين لجهه اليسار لاختيار القناة</string>
     <string name="labal_radio_activtiy_header_page">العودة للرئيسية</string>
     ////soura_content_activtiy
     <string name="labal_soura_content_activtiy_header_page">العودة</string>
