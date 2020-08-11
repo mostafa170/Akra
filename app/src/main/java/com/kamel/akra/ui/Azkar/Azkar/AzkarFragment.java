@@ -48,6 +48,7 @@ public class AzkarFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_azkar, container, false);
+        view = binding.getRoot();
 
         //listOfHadethName = new ArrayList<>();
         azkarData = txtReader("azkar.txt");

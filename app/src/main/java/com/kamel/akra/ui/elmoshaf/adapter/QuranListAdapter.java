@@ -44,7 +44,7 @@ public class QuranListAdapter extends RecyclerView.Adapter<QuranListAdapter.View
         viewHolder.binding.quranText.setText(listOfSewarNames[position]);
 
         if (onTextClickListener != null) {
-            viewHolder.binding.quranText.setOnClickListener(new View.OnClickListener() {
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onTextClickListener.onItemClick(position, listOfSewarNames[position]);

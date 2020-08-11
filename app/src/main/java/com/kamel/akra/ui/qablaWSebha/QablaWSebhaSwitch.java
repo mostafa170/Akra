@@ -1,38 +1,38 @@
-package com.kamel.akra.ui.Azkar;
+package com.kamel.akra.ui.qablaWSebha;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
-import com.google.android.material.tabs.TabLayout;
 import com.kamel.akra.R;
 import com.kamel.akra.base.BaseActivity;
-import com.kamel.akra.databinding.ActivitySwitchBinding;
+import com.kamel.akra.databinding.ActivityQablaWSebhaSwitchBinding;
 import com.kamel.akra.ui.Azkar.Azkar.AzkarFragment;
 import com.kamel.akra.ui.Azkar.AzkarlListan.AzkarlListanFragment;
 import com.kamel.akra.ui.ahadeth.AhadethActivity;
 import com.kamel.akra.ui.home.MainActivity;
+import com.kamel.akra.ui.qablaWSebha.qabla.QablaFragment;
+import com.kamel.akra.ui.qablaWSebha.sebha.MentionFragment;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
-public class SwitchActivity extends BaseActivity {
-
-    ActivitySwitchBinding binding;
+public class QablaWSebhaSwitch extends BaseActivity {
+    ActivityQablaWSebhaSwitchBinding binding;
     FragmentPagerItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_switch);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_qabla_w_sebha_switch);
         getSupportActionBar().hide();
 
         prepareTabsLayout();
 
         binding.activityRadioBack.setOnClickListener(view -> {
-            Intent intent=new Intent(SwitchActivity.this, MainActivity.class);
+            Intent intent=new Intent(QablaWSebhaSwitch.this, MainActivity.class);
             startActivity(intent);
         });
     }
@@ -40,8 +40,8 @@ public class SwitchActivity extends BaseActivity {
     public void prepareTabsLayout() {
         adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        .add(R.string.title_azkar, AzkarFragment.class)
-                        .add(R.string.title_listan_azkar, AzkarlListanFragment.class)
+                        .add(R.string.title_sebha, MentionFragment.class)
+                        .add(R.string.title_qabla, QablaFragment.class)
                         .create());
 
 
