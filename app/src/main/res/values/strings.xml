@@ -15,6 +15,7 @@
     <string name="labal_main_activity_btn_ahdes">احاديث</string>
     <string name="labal_main_activity_azkar">الاذكار</string>
     <string name="laba_main_activtiy_elsabha">القبلة و السبحة</string>
+    <string name="laba_main_activtiy_prayer">مواقيت الصلاة</string>
     //radio
     <string name="labal_actovoty_radio_swipe">مرر يمين لجهه اليسار لاختيار القناة</string>
     <string name="labal_radio_activtiy_header_page">العودة للرئيسية</string>
@@ -58,6 +59,12 @@
 
     <string name="warning">warning</string>
     <string name="message_request_location_permission">we need to access your location to show nearby coffe shops</string>
+    <string name="label_prayer_Fajr">الفجر</string>
+    <string name="label_prayer_Sunrise">الشروق</string>
+    <string name="label_prayer_Dhuhr">الظهر</string>
+    <string name="label_prayer_Asr">العصر</string>
+    <string name="label_prayer_Maghrib">المغرب</string>
+    <string name="label_prayer_Isha">العشاء</string>
     <string name="zero">0:00</string>
 
 </resources>
