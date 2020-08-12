@@ -58,5 +58,6 @@
 
     <string name="warning">warning</string>
     <string name="message_request_location_permission">we need to access your location to show nearby coffe shops</string>
+    <string name="zero">0:00</string>
 
 </resources>

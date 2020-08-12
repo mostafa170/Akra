@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_app"
+            tools:context=".ui.Azkar.Azkar.AzkarFragment">
+
+            <ImageView
+                android:id="@+id/activity_radio_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/radio_activtiy_header_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/arbfonts_amin"
+                android:text="@string/labal_soura_content_activtiy_header_page"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_radio_back"
+                app:layout_constraintStart_toEndOf="@+id/activity_radio_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+           <ImageView
+               android:id="@+id/frag_lis_iv_leader"
+               android:layout_width="250dp"
+               android:layout_height="230dp"
+               android:layout_marginTop="20dp"
+               android:src="@drawable/ic_azkar"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/radio_activtiy_header_page"/>
+
+            <TextView
+                android:id="@+id/frag_lis_tv_name_leader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
+                android:fontFamily="@font/arbfonts_amin_font_regular_one"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@+id/frag_lis_iv_leader"/>
+
+            <TextView
+                android:id="@+id/frag_lis_tv_name_azkar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
+                android:fontFamily="@font/arbfonts_amin_font_regular_one"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@+id/frag_lis_tv_name_leader"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/frag_azkar_lis_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imagePlayPause"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_baseline_play_circle_filled_24" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_current_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/colorGreen"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatSeekBar
+                            android:id="@+id/player_seek_bar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="5" />
+
+                        <TextView
+                            android:id="@+id/text_total_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/zero"
+                            android:textColor="@color/colorGreen"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

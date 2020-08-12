@@ -1,66 +1,106 @@
 package com.kamel.akra.ui.Azkar.AzkarlListan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chootdev.csnackbar.Align;
+import com.chootdev.csnackbar.Duration;
+import com.chootdev.csnackbar.Snackbar;
+import com.chootdev.csnackbar.Type;
 import com.kamel.akra.R;
+import com.kamel.akra.base.BaseFragment;
+import com.kamel.akra.databinding.FragmentAzkarlListanBinding;
+import com.kamel.akra.ui.Azkar.AzkarlListan.Adater.AdapterAzkar;
+import com.kamel.akra.ui.Azkar.AzkarlListan.model.AzkarItemData;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AzkarlListanFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class AzkarlListanFragment extends Fragment {
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class AzkarlListanFragment extends BaseFragment {
+
+    View view;
+    FragmentAzkarlListanBinding binding;
+    AdapterAzkar adapterAzkar;
+    private AzkarListanViewModel azkarListanViewModel;
 
     public AzkarlListanFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AzkarlListanFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AzkarlListanFragment newInstance(String param1, String param2) {
-        AzkarlListanFragment fragment = new AzkarlListanFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_azkarl_listan, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_azkarl_listan, container, false);
+        view = binding.getRoot();
+
+        azkarListanViewModel = new ViewModelProvider(this).get(AzkarListanViewModel.class);
+        adapterAzkar = new AdapterAzkar(null);
+        binding.azkarRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.azkarRecyclerView.setAdapter(adapterAzkar);
+
+        azkarListanViewModel.getAzkarListan();
+
+
+        ////////////////request//////////
+        azkarListanViewModel.getErrorMessage().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if (integer == 1) {
+                    Snackbar.with(getContext(), null)
+                            .type(Type.ERROR)
+                            .message("error in response data")
+                            .duration(Duration.LONG)
+                            .fillParent(true)
+                            .textAlign(Align.CENTER)
+                            .show();
+
+                } else {
+                    Snackbar.with(getContext(), null)
+                            .type(Type.ERROR)
+                            .message("error in Network")
+                            .duration(Duration.LONG)
+                            .fillParent(true)
+                            .textAlign(Align.CENTER)
+                            .show();
+                }
+            }
+        });
+
+        azkarListanViewModel.getShowAzakar().observe(getViewLifecycleOwner(), new Observer<List<AzkarItemData>>() {
+            @Override
+            public void onChanged(@Nullable List<AzkarItemData> azkarItemData) {
+                //show data in recyclerView
+                adapterAzkar = new AdapterAzkar(azkarItemData);
+                binding.azkarRecyclerView.setAdapter(adapterAzkar);
+                adapterAzkar.setOnItemClickListener(new AdapterAzkar.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int pos, AzkarItemData Message) {
+                        Intent intent = new Intent(getContext(), ListanActivty.class);
+
+                        intent.putExtra("url", String.valueOf(Message.getLink()));
+                        Log.e("xxx",String.valueOf(Message.getLink()));
+                        intent.putExtra("nameLeader", String.valueOf(Message.getReaderName()));
+                        intent.putExtra("nameAzkar", String.valueOf(Message.getName()));
+                        startActivity(intent);
+                    }
+                });
+            }
+
+        });
+        return view;
     }
+
+
 }
