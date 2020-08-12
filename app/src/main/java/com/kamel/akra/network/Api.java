@@ -1,6 +1,7 @@
 package com.kamel.akra.network;
 
 
+import com.kamel.akra.ui.prayerTime.prayerModel.PrayerTimeResponse;
 import com.kamel.akra.ui.radio.model.RadiosResponse;
 
 import io.reactivex.Single;
@@ -15,4 +16,11 @@ import retrofit2.http.Query;
 public interface Api {
     @GET("radio/radio_ar.json")
     Call<RadiosResponse> getRadioChannels();
+
+    @GET("day.json?")
+    Call<PrayerTimeResponse> getPrayerTime(@Query("longitude") String longitude,
+                                           @Query("latitude") String latitude,
+                                           @Query("elevation") String elevation,
+                                           @Query("date") String date,
+                                           @Query("timeformat") String timeformat);
 }

@@ -75,4 +75,5 @@ public class BaseActivity extends AppCompatActivity {
             dialog.dismiss();
     }
 
+
 }

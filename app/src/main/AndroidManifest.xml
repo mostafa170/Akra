@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.qablaWSebha.QablaWSebhaSwitch"></activity>
+        <activity android:name=".ui.prayerTime.PrayerTime"/>
+        <activity android:name=".ui.qablaWSebha.QablaWSebhaSwitch" />
         <activity android:name=".ui.Azkar.SwitchActivity" />
         <activity android:name=".ui.elmoshaf.SouraContentActivity" />
         <activity android:name=".ui.elmoshaf.ElmoshafActivity" />
