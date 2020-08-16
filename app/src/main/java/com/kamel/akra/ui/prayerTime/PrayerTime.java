@@ -194,13 +194,53 @@ public class PrayerTime extends BaseActivity implements LocationListener {
         super.onResume();
 
 
+        try {
+            if(isLocationPermessionGranted()){
+                //call function
+                //Toast.makeText(this, "onRusuem", Toast.LENGTH_SHORT).show();
+                //  showUserLocation();
+                if (myLocationProvider.isGpsEnabled()) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+                    alertDialogBuilder.setTitle("رسالة تأكيد");
+                    alertDialogBuilder.setMessage("من فضلك قم بتشغيل ال GPS الخاص بالهاتف");
+                    alertDialogBuilder.setCancelable(true);
 
-                    if (myLocationProvider.isGpsEnabled()){
+                    alertDialogBuilder.setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
 
-                    myLocationProvider=new MyLocationProvider(activity);
-                    currentLocation=myLocationProvider.getUserLocation(this);
+                        @Override
+                        public void onClick(DialogInterface dialog, int arg1) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                            dialog.cancel();
+                            Log.e("log", "you  are here");
+
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+
+                        }
+                    });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+
+                    if (myLocationProvider.isGpsEnabled()) {
+                        Log.e("stateDilog", "enabeld");
+                        alertDialog.cancel();
+                    } else {
+                        Log.e("stateDilog", "desibled");
+                        alertDialog.show();
+                    }
+                    myLocationProvider = new MyLocationProvider(activity);
+                    currentLocation = myLocationProvider.getUserLocation(this);
                     latitude = currentLocation.getLatitude();
                     longitude = currentLocation.getLongitude();
+                    DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+                    String date2 = df2.format(Calendar.getInstance().getTime());
+                    getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
 
                     Geocoder geocoder;
                     List<Address> addresses = new ArrayList();
@@ -215,13 +255,26 @@ public class PrayerTime extends BaseActivity implements LocationListener {
                         e.printStackTrace();
                     }
 
-                    String area =  addresses.get(0).getAdminArea();
+                    String area = addresses.get(0).getAdminArea();
                     String country = addresses.get(0).getCountryName();
-                    binding.cityGPS.setText(country+" - "+area);
-                }else {
-                    binding.cityGPS.setText("غير متوفر");
+                    if (country == null || area == null) {
+
+                        binding.cityGPS.setText("غير متوفر");
+                    } else {
+                        binding.cityGPS.setText(country + " - " + area);
+                        //UserLocation.setText(session.getLocationCode());
+                    }
 
                 }
+
+            }else {
+                requestLocationPersmission();
+            }
+
+
+        }catch (Exception e){
+            Log.e("ResumeLocPermissions","isLocationPermissionsNotGranted");
+        }
 
     }
 
