@@ -27,6 +27,8 @@ import com.kamel.akra.base.BaseActivity;
 import com.kamel.akra.databinding.ActivityPrayerTimeBinding;
 
 import com.kamel.akra.network.PrayerTimeAPI;
+import com.kamel.akra.ui.Azkar.SwitchActivity;
+import com.kamel.akra.ui.home.MainActivity;
 import com.kamel.akra.ui.prayerTime.prayerModel.PrayerTimeResponse;
 import com.kamel.akra.ui.qablaWSebha.qabla.MyLocationProvider;
 
@@ -49,7 +51,8 @@ public class PrayerTime extends BaseActivity implements LocationListener {
     MyLocationProvider myLocationProvider;
     Location currentLocation;
     double latitude,longitude;
-
+    DateFormat df2;
+    String date2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +60,18 @@ public class PrayerTime extends BaseActivity implements LocationListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_prayer_time);
         getSupportActionBar().hide();
         DateFormat df = new SimpleDateFormat("EEE, yyyy-MM-dd");
-        DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
+        df2 = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(Calendar.getInstance().getTime());
-        String date2 = df2.format(Calendar.getInstance().getTime());
+        date2 = df2.format(Calendar.getInstance().getTime());
         Log.e("date", "onCreate: "+date +"_______"+date2);
 
         binding.textViewDayTime.setText(date);
         myLocationProvider=new MyLocationProvider(activity);
+
+        binding.activityRadioBack.setOnClickListener(view -> {
+            Intent intent=new Intent(PrayerTime.this, MainActivity.class);
+            startActivity(intent);
+        });
 
 
         if (isLocationPermessionGranted()){
@@ -112,10 +120,9 @@ public class PrayerTime extends BaseActivity implements LocationListener {
 
 
                 currentLocation=myLocationProvider.getUserLocation(this);
-                latitude = currentLocation.getLatitude();
-                longitude = currentLocation.getLongitude();
 
-                getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
+
+
 
 
                 Geocoder geocoder;
@@ -123,6 +130,10 @@ public class PrayerTime extends BaseActivity implements LocationListener {
 
 
                 try {
+
+                    latitude = currentLocation.getLatitude();
+                    longitude = currentLocation.getLongitude();
+                    getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
                     Locale mLocale = new Locale("ar");
                     Locale.setDefault(mLocale);
                     geocoder = new Geocoder(activity, Locale.getDefault());
@@ -193,12 +204,9 @@ public class PrayerTime extends BaseActivity implements LocationListener {
     public void onResume() {
         super.onResume();
 
-
         try {
             if(isLocationPermessionGranted()){
                 //call function
-                //Toast.makeText(this, "onRusuem", Toast.LENGTH_SHORT).show();
-                //  showUserLocation();
                 if (myLocationProvider.isGpsEnabled()) {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
                     alertDialogBuilder.setTitle("رسالة تأكيد");
@@ -236,17 +244,18 @@ public class PrayerTime extends BaseActivity implements LocationListener {
                     }
                     myLocationProvider = new MyLocationProvider(activity);
                     currentLocation = myLocationProvider.getUserLocation(this);
-                    latitude = currentLocation.getLatitude();
-                    longitude = currentLocation.getLongitude();
-                    DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
-                    String date2 = df2.format(Calendar.getInstance().getTime());
-                    getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
+
+
 
                     Geocoder geocoder;
                     List<Address> addresses = new ArrayList();
 
 
                     try {
+                        latitude = currentLocation.getLatitude();
+                        longitude = currentLocation.getLongitude();
+                        getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
+
                         Locale mLocale = new Locale("ar");
                         Locale.setDefault(mLocale);
                         geocoder = new Geocoder(activity, Locale.getDefault());
@@ -262,8 +271,11 @@ public class PrayerTime extends BaseActivity implements LocationListener {
                         binding.cityGPS.setText("غير متوفر");
                     } else {
                         binding.cityGPS.setText(country + " - " + area);
-                        //UserLocation.setText(session.getLocationCode());
+
                     }
+
+                }else {
+                    binding.cityGPS.setText("غير متوفر");
 
                 }
 
@@ -317,30 +329,89 @@ public class PrayerTime extends BaseActivity implements LocationListener {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the
-                    myLocationProvider=new MyLocationProvider(activity);
-                    latitude = currentLocation.getLatitude();
-                    longitude = currentLocation.getLongitude();
-
-                    Geocoder geocoder;
-                    List<Address> addresses = new ArrayList();
-
 
                     try {
-                        Locale mLocale = new Locale("ar");
-                        Locale.setDefault(mLocale);
-                        geocoder = new Geocoder(activity, Locale.getDefault());
-                        addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        if (isLocationPermessionGranted()) {
+                            //call function
+                            if (myLocationProvider.isGpsEnabled()) {
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+                                alertDialogBuilder.setTitle("رسالة تأكيد");
+                                alertDialogBuilder.setMessage("من فضلك قم بتشغيل ال GPS الخاص بالهاتف");
+                                alertDialogBuilder.setCancelable(true);
+
+                                alertDialogBuilder.setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int arg1) {
+                                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                                        dialog.cancel();
+                                        Log.e("log", "you  are here");
+
+                                    }
+                                });
+                                alertDialogBuilder.setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+
+                                    }
+                                });
+
+                                AlertDialog alertDialog = alertDialogBuilder.create();
+                                alertDialog.show();
+
+
+                                if (myLocationProvider.isGpsEnabled()) {
+                                    Log.e("stateDilog", "enabeld");
+                                    alertDialog.cancel();
+                                } else {
+                                    Log.e("stateDilog", "desibled");
+                                    alertDialog.show();
+                                }
+                                myLocationProvider = new MyLocationProvider(activity);
+                                currentLocation = myLocationProvider.getUserLocation(this);
+                                latitude = currentLocation.getLatitude();
+                                longitude = currentLocation.getLongitude();
+                                getPrayerTime(String.valueOf(longitude), String.valueOf(latitude), date2);
+
+
+                                Geocoder geocoder;
+                                List<Address> addresses = new ArrayList();
+
+
+                                try {
+
+                                    Locale mLocale = new Locale("ar");
+                                    Locale.setDefault(mLocale);
+                                    geocoder = new Geocoder(activity, Locale.getDefault());
+                                    addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                String area = addresses.get(0).getAdminArea();
+                                String country = addresses.get(0).getCountryName();
+                                if (country == null || area == null) {
+
+                                    binding.cityGPS.setText("غير متوفر");
+                                } else {
+                                    binding.cityGPS.setText(country + " - " + area);
+
+                                }
+
+                            } else {
+                                binding.cityGPS.setText("غير متوفر");
+
+                            }
+
+                        } else {
+                            requestLocationPersmission();
+                        }
+
+
+                    } catch (Exception e) {
+                        Log.e("ResumeLocPermissions", "isLocationPermissionsNotGranted");
                     }
-
-                    String area =  addresses.get(0).getAdminArea();
-                    String country = addresses.get(0).getCountryName();
-                    binding.cityGPS.setText(area);
-                } else {
-
-                    Toast.makeText(activity,"لا استطيع العثور على موقعك", Toast.LENGTH_LONG).show();
-
                 }
                 return;
             }
