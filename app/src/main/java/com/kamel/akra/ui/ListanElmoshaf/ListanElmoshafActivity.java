@@ -1,7 +1,6 @@
 package com.kamel.akra.ui.ListanElmoshaf;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,15 +18,10 @@ import com.chootdev.csnackbar.Type;
 import com.kamel.akra.R;
 import com.kamel.akra.base.BaseActivity;
 import com.kamel.akra.databinding.ActivityListanElmoshafBinding;
-import com.kamel.akra.ui.Azkar.AzkarlListan.Adater.AdapterAzkar;
-import com.kamel.akra.ui.Azkar.AzkarlListan.AzkarListanViewModel;
 import com.kamel.akra.ui.Azkar.AzkarlListan.ListanActivty;
-import com.kamel.akra.ui.Azkar.AzkarlListan.model.AzkarItemData;
 import com.kamel.akra.ui.ListanElmoshaf.adapter.AdapterListanElmoshaf;
-import com.kamel.akra.ui.ListanElmoshaf.model.ResponseElmoshaf;
-import com.kamel.akra.ui.elmoshaf.ElmoshafActivity;
+import com.kamel.akra.ui.ListanElmoshaf.model.DataItem;
 import com.kamel.akra.ui.home.MainActivity;
-import com.kamel.akra.ui.radio.RadioActivity;
 
 import java.util.List;
 
@@ -77,9 +71,9 @@ public class ListanElmoshafActivity extends BaseActivity {
             }
         });
 
-        viewModel.getShowSora().observe(this, new Observer<List<ResponseElmoshaf>>() {
+        viewModel.getShowSora().observe(this, new Observer<List<DataItem>>() {
             @Override
-            public void onChanged(@Nullable List<ResponseElmoshaf> responseElmoshafs) {
+            public void onChanged(@Nullable List<DataItem> responseElmoshafs) {
                 if (responseElmoshafs == null) {
                     //errorMessage if data coming is null;
                     binding.tvListEmpty.setVisibility(View.VISIBLE);
@@ -89,15 +83,15 @@ public class ListanElmoshafActivity extends BaseActivity {
                     binding.recElmoshafListan.setAdapter(adapter);
                     adapter.setOnItemClickListener(new AdapterListanElmoshaf.OnItemClickListener() {
                         @Override
-                        public void onItemClick(int pos, ResponseElmoshaf Message) {
-                            Intent intent = new Intent(ListanElmoshafActivity.this, ListanActivty.class);
+                        public void onItemClick(int pos, DataItem Message) {
+                            Intent intent = new Intent(ListanElmoshafActivity.this, ListanQuranActivty.class);
 
                             intent.putExtra("url", String.valueOf(Message.getLink()));
-                            Log.e("xxx", String.valueOf(Message.getLink()));
                             intent.putExtra("nameLeader", String.valueOf(Message.getReaderName()));
                             intent.putExtra("nameSora", String.valueOf(Message.getSora()));
                             startActivity(intent);
                         }
+
                     });
                 }
             }

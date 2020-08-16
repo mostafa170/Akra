@@ -1,31 +1,13 @@
 package com.kamel.akra.ui.ListanElmoshaf.model;
 
-import com.google.gson.annotations.SerializedName;
-
-public class ResponseElmoshaf {
-
-	@SerializedName("pageNumber")
+public class DataItem{
 	private String pageNumber;
-
-	@SerializedName("readerName")
 	private String readerName;
-
-	@SerializedName("link")
 	private String link;
-
-	@SerializedName("id")
 	private String id;
-
-	@SerializedName("type")
 	private String type;
-
-	@SerializedName("sora")
 	private String sora;
-
-	@SerializedName("soraNumber")
 	private String soraNumber;
-
-	@SerializedName("ayatsNumber")
 	private String ayatsNumber;
 
 	public void setPageNumber(String pageNumber){

@@ -7,7 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.kamel.akra.network.QuranAPI;
-import com.kamel.akra.ui.ListanElmoshaf.model.ResponseElmoshaf;
+import com.kamel.akra.ui.ListanElmoshaf.model.DataItem;
+import com.kamel.akra.ui.ListanElmoshaf.model.ResponseQuran;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import retrofit2.Response;
 public class ListanElmoshafViewModel extends AndroidViewModel {
 
     protected MutableLiveData<Integer> errorMessage;
-    protected MutableLiveData<List<ResponseElmoshaf>> showSora;
+    protected MutableLiveData<List<DataItem>> showSora;
 
     public ListanElmoshafViewModel(@NonNull Application application) {
         super(application);
@@ -31,22 +32,26 @@ public class ListanElmoshafViewModel extends AndroidViewModel {
         return errorMessage;
     }
 
-    public MutableLiveData<List<ResponseElmoshaf>> getShowSora() {
+    public MutableLiveData<List<DataItem>> getShowSora() {
         return showSora;
     }
 
     public void getElmoshafListan(String lang,int reader_id){
-        QuranAPI.getApis().getElmoshafListan(lang,reader_id).enqueue(new Callback<List<ResponseElmoshaf>>() {
+        QuranAPI.getApis().getElmoshafListan(lang,reader_id).enqueue(new Callback<ResponseQuran>() {
             @Override
-            public void onResponse(Call<List<ResponseElmoshaf>> call, Response<List<ResponseElmoshaf>> response) {
+            public void onResponse(Call<ResponseQuran> call, Response<ResponseQuran> response) {
                 if (response.isSuccessful()){
-                    showSora.postValue(response.body());
-                }else {
-                    showSora.postValue(response.body());
+
+                    if ("القران الكريم".equals(String.valueOf(response.body().getMessage()))){
+                        showSora.postValue(response.body().getData());
+                    }else {
+                        showSora.postValue(response.body().getData());
+                    }
                 }
+
             }
             @Override
-            public void onFailure(Call<List<ResponseElmoshaf>> call, Throwable t) {
+            public void onFailure(Call<ResponseQuran> call, Throwable t) {
                 errorMessage.postValue(1);
             }
         });

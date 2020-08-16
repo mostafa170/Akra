@@ -42,6 +42,7 @@
                 android:text="سورة ق"
                 android:textColor="@color/colorGreen"
                 android:textSize="18sp"
+                android:padding="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/item_quran_number_elsora"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,15 +51,14 @@
                 android:id="@+id/id_makan_elsora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="20dp"
                 android:text="مكية"
                 android:textColor="@color/colorGreen"
                 android:textSize="14sp"
                 android:fontFamily="@font/arbfonts_amin_font_regular_one"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/id_quran_text"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView

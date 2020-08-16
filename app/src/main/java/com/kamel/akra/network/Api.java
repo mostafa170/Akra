@@ -2,7 +2,7 @@ package com.kamel.akra.network;
 
 
 import com.kamel.akra.ui.Azkar.AzkarlListan.model.AzkarItemData;
-import com.kamel.akra.ui.ListanElmoshaf.model.ResponseElmoshaf;
+import com.kamel.akra.ui.ListanElmoshaf.model.ResponseQuran;
 import com.kamel.akra.ui.prayerTime.prayerModel.PrayerTimeResponse;
 import com.kamel.akra.ui.radio.model.RadiosResponse;
 
@@ -31,6 +31,6 @@ public interface Api {
                                            @Query("timeformat") String timeformat);
     @FormUrlEncoded
     @POST("QuranShared.php")
-    Call<List<ResponseElmoshaf>> getElmoshafListan(@Header("lang") String lang,
-                                                   @Field("reader_id") int reader_id) ;
+    Call<ResponseQuran> getElmoshafListan(@Header("lang") String lang,
+                                          @Field("reader_id") int reader_id) ;
 }

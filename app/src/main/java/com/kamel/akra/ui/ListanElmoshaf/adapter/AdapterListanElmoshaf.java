@@ -10,16 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kamel.akra.R;
 import com.kamel.akra.databinding.ItemQuranListanBinding;
-import com.kamel.akra.ui.ListanElmoshaf.model.ResponseElmoshaf;
+import com.kamel.akra.ui.ListanElmoshaf.model.DataItem;
 
 import java.util.List;
 
 public class AdapterListanElmoshaf extends RecyclerView.Adapter<AdapterListanElmoshaf.ViewHolder> {
 
-    List<ResponseElmoshaf> ResponseElmoshaf;
+    List<DataItem> ResponseElmoshaf;
 
 
-    public AdapterListanElmoshaf(List<ResponseElmoshaf> responseElmoshafs) {
+    public AdapterListanElmoshaf(List<DataItem> responseElmoshafs) {
         this.ResponseElmoshaf = responseElmoshafs;
     }
 
@@ -34,7 +34,7 @@ public class AdapterListanElmoshaf extends RecyclerView.Adapter<AdapterListanElm
 
     @Override
     public void onBindViewHolder(@NonNull AdapterListanElmoshaf.ViewHolder viewHolder, final int position) {
-        final ResponseElmoshaf responseElmoshaf = ResponseElmoshaf.get(position);
+        final DataItem responseElmoshaf = ResponseElmoshaf.get(position);
 
         viewHolder.itemQuranListanBinding.itemQuranNumberElsora.setText(responseElmoshaf.getSoraNumber());
         viewHolder.itemQuranListanBinding.idQuranText.setText(responseElmoshaf.getSora());
@@ -86,7 +86,7 @@ public class AdapterListanElmoshaf extends RecyclerView.Adapter<AdapterListanElm
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int pos, ResponseElmoshaf responseElmoshaf);
+        void onItemClick(int pos, DataItem responseElmoshaf);
     }
 
 }
