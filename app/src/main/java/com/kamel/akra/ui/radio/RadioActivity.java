@@ -17,7 +17,7 @@ import com.chootdev.csnackbar.Type;
 import com.kamel.akra.R;
 import com.kamel.akra.base.BaseActivity;
 import com.kamel.akra.databinding.ActivityRadioBinding;
-import com.kamel.akra.network.APIManager;
+import com.kamel.akra.network.RadioAPI;
 import com.kamel.akra.ui.home.MainActivity;
 import com.kamel.akra.ui.radio.adapter.RadioChannelsAdapter;
 import com.kamel.akra.ui.radio.model.RadiosItem;
@@ -117,7 +117,7 @@ public class RadioActivity extends BaseActivity {
 
     public void getRadioChannels(){
         showProgressBar(R.string.loading,R.string.please_wait);
-        APIManager.getApis()
+        RadioAPI.getApis()
                 .getRadioChannels()
                 .enqueue(new Callback<RadiosResponse>() {
                     @Override

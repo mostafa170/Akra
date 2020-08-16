@@ -9,6 +9,7 @@ import com.kamel.akra.R;
 import com.kamel.akra.base.BaseActivity;
 import com.kamel.akra.databinding.ActivityMainBinding;
 import com.kamel.akra.ui.Azkar.SwitchActivity;
+import com.kamel.akra.ui.ListanElmoshaf.ListanElmoshafActivity;
 import com.kamel.akra.ui.ahadeth.AhadethActivity;
 import com.kamel.akra.ui.elmoshaf.ElmoshafActivity;
 import com.kamel.akra.ui.prayerTime.PrayerTime;
@@ -51,6 +52,11 @@ public class MainActivity extends BaseActivity {
 
         binding.mainActivtiyBtnPrayer.setOnClickListener(view -> {
             Intent intent=new Intent(MainActivity.this, PrayerTime.class);
+            startActivity(intent);
+        });
+
+        binding.mainActivityListenBtn.setOnClickListener(view -> {
+            Intent intent=new Intent(MainActivity.this, ListanElmoshafActivity.class);
             startActivity(intent);
         });
     }

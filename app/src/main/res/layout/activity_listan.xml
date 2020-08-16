@@ -47,7 +47,7 @@
                android:layout_width="250dp"
                android:layout_height="230dp"
                android:layout_marginTop="20dp"
-               android:src="@drawable/ic_azkar"
+               android:src="@drawable/ic_masged"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintTop_toBottomOf="@+id/radio_activtiy_header_page"/>
@@ -58,10 +58,10 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:fontFamily="@font/arbfonts_amin_font_regular_one"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/colorWhite"
                 app:layout_constraintTop_toBottomOf="@+id/frag_lis_iv_leader"/>
 
@@ -74,7 +74,7 @@
                 android:textSize="18sp"
                 android:fontFamily="@font/arbfonts_amin_font_regular_one"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/colorWhite"
                 app:layout_constraintTop_toBottomOf="@+id/frag_lis_tv_name_leader"/>
 

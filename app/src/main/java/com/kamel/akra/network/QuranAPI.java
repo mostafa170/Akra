@@ -11,14 +11,14 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MyApplication extends Application {
+public class QuranAPI extends Application {
 
-    private static MyApplication INSTANCE ;
+    private static QuranAPI INSTANCE ;
     private static Retrofit retrofit = null;
 
-    public static MyApplication getInstance() {
+    public static QuranAPI getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new MyApplication();
+            INSTANCE = new QuranAPI();
         }
         return INSTANCE;
     }

@@ -1,15 +1,18 @@
 package com.kamel.akra.network;
 
 
+import com.kamel.akra.ui.Azkar.AzkarlListan.model.AzkarItemData;
+import com.kamel.akra.ui.ListanElmoshaf.model.ResponseElmoshaf;
 import com.kamel.akra.ui.prayerTime.prayerModel.PrayerTimeResponse;
 import com.kamel.akra.ui.radio.model.RadiosResponse;
 
-import io.reactivex.Single;
+import java.util.List;
+
 import retrofit2.Call;
-import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -26,4 +29,8 @@ public interface Api {
                                            @Query("elevation") String elevation,
                                            @Query("date") String date,
                                            @Query("timeformat") String timeformat);
+    @FormUrlEncoded
+    @POST("QuranShared.php")
+    Call<List<ResponseElmoshaf>> getElmoshafListan(@Header("lang") String lang,
+                                                   @Field("reader_id") int reader_id) ;
 }
