@@ -33,6 +33,7 @@ public class ListanQuranActivty extends AppCompatActivity {
         binding.playerSeekBar.setMax(100);
 
         binding.activityRadioBack.setOnClickListener(view -> {
+            mediaPlayer.stop();
             Intent intent=new Intent(ListanQuranActivty.this, ListanElmoshafActivity.class);
             startActivity(intent);
         });
@@ -44,6 +45,11 @@ public class ListanQuranActivty extends AppCompatActivity {
         binding.imagePlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                if(mediaPlayer!=null){
+//                    mediaPlayer.stop();
+//                    handler.removeCallbacks(update);
+//                    binding.imagePlayPause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
+
                 if (mediaPlayer.isPlaying()){
                     handler.removeCallbacks(update);
                     mediaPlayer.pause();
@@ -91,6 +97,7 @@ public class ListanQuranActivty extends AppCompatActivity {
         try {
             mediaPlayer.setDataSource(getIntent().getStringExtra("url"));
             mediaPlayer.prepare();
+
             binding.textTotalDuration.setText(milliSecondToTime((long) mediaPlayer.getDuration()));
         }catch (Exception e){
             Toast.makeText(this,"",Toast.LENGTH_LONG).show();

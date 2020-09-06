@@ -110,9 +110,6 @@ public class RadioActivity extends BaseActivity {
             showMessage(R.string.error,R.string.cannot_play_channel);
         }
 
-
-
-
     }
 
     public void getRadioChannels(){

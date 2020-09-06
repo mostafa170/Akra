@@ -426,34 +426,46 @@ public class QablaFragment extends BaseFragment implements SensorEventListener, 
     @Override
     public void onLocationChanged(Location location) {
         currentLocation = location;
+        text_atas.setText("جارى تحديث الموقع");
+
         latitude = currentLocation.getLatitude();
         longitude = currentLocation.getLongitude();
-        qiblaAngle = getQiblaAngle(latitude, longitude, meccaLatitude, meccaLongitude);
-        Log.e(TAG, "onCreateView: "+longitude );
-
-        Geocoder geocoder;
+        qiblaAngle = getQiblaAngle(currentLocation.getLatitude(), currentLocation.getLongitude(), meccaLatitude, meccaLongitude);
         List<Address> addresses = new ArrayList();
 
 
         try {
             Locale mLocale = new Locale("ar");
             Locale.setDefault(mLocale);
-            geocoder = new Geocoder(activity, Locale.getDefault());
+            Geocoder geocoder = new Geocoder(activity, Locale.getDefault());
             addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("locationCityMain2","null");
         }
 
-        String city = addresses.get(0).getLocality();
-        String country = addresses.get(0).getCountryName();
-        if (country == null || city == null){
+        try {
+            String city = addresses.get(0).getLocality();
+            String country = addresses.get(0).getCountryName();
 
-            text_atas.setText("غير متوفر");
+            if (city == null || country == null){
+                text_atas.setText("غير متوفر");
+            }
+            else if (city == null){
+                text_atas.setText("غير متوفر");
+            }
+
+            if(currentLocation!=null){
+                // Toast.makeText(this, "Can't Access Location", Toast.LENGTH_SHORT).show();
+                text_atas.setText(country+" - "+city);
+
+
+
+            }
+        }catch (Exception e){
+            Log.e("locationCityMain2","null");
         }
-        else {
-            text_atas.setText(country+" - "+city);
-            //UserLocation.setText(session.getLocationCode());
-        }
+
+
     }
 
     @Override
