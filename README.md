@@ -1,4 +1,4 @@
-Dowload from google play: https://play.google.com/store/apps/details?id=com.kamel.akra
+Download from google play: https://play.google.com/store/apps/details?id=com.kamel.akra
 
 Technologies:
 - Retrofit library.
