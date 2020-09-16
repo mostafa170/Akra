@@ -1,2 +1,18 @@
-# Akra
-quran app using MVVM &amp; retrofit &amp; dataBinding &amp;recycler view &amp;card view &amp; hdodenhof lib. &amp;picasso&amp;smart tab layout&amp;chootdev:csnackbar
+Dowload from google play: https://play.google.com/store/apps/details?id=com.kamel.akra
+
+Technologies:
+- Retrofit library.
+- Rxjava library.
+- Gson library.
+- dataBinding.
+- smart tab layout library.
+- hdodenhof lib library.
+- picasso library.
+- gson.
+- chootdev:csnackbar library.
+- toasty library.
+- MediaPlayer.
+- BufferingUpdate.
+- recycler view and card view.
+
+we will add Room DB &Rxjava&firebase-messaging in akra
