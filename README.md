@@ -14,5 +14,6 @@ Technologies:
 - MediaPlayer.
 - BufferingUpdate.
 - recycler view and card view.
+- Bitrise for mobile CI CD
 
 we will add Room DB &Rxjava&firebase-messaging in akra
