@@ -1,13 +1,18 @@
-apply plugin: 'com.android.application'
-
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.kamel.akra"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -32,59 +37,80 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    // Kotlin and AndroidX
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // UI
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    // For responsive layouts
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // ViewModels and LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
 
-    //DataBase SQLite
-    def room_version = "1.1.1"
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    // Navigation Component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 
-    //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+    // Coroutines for getting off the UI thread
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
-    // recycler view and card view
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation 'androidx.cardview:cardview:1.0.0'
+    // Retrofit for networking
+    implementation ('com.squareup.retrofit2:retrofit:2.9.0'){
+        exclude module: 'okhttp'
+    }
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    // snack bar
-    implementation 'com.chootdev:csnackbar:1.4.2'
-    //circle image
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    // ViewModel and LiveData (arch components)
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1'
+
+    // Arrow Core mainly for error handling
+    implementation 'io.arrow-kt:arrow-core:1.0.0'
+
+    // Shared Preferences
+    implementation 'androidx.preference:preference-ktx:1.2.0'
+
+    // Hilt (Dependency Injection)
+    implementation 'com.google.dagger:hilt-android:2.42'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
+    implementation 'androidx.hilt:hilt-work:1.0.0'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    //Google Maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
 
-    //picasso for images
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
-    //firebase
-    implementation 'com.google.firebase:firebase-messaging:20.2.3'
-
-
-    //noinspection LifecycleAnnotationProcessorWithJava8
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
-
-    def lifecycle_version = "2.2.0"
-    // alternatively - just ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
-    // ViewModel saved instance
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
-    //MaterialDialog
-    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
-
-
-    // smart tab layout
-    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
-    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+}
+kapt {
+    correctErrorTypes = true
 }
