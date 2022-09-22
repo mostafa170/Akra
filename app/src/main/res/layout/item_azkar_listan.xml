@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/item_azkar_img_reader"
                 android:layout_width="24dp"
                 android:layout_height="24dp"

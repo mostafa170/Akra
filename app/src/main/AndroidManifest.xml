@@ -18,26 +18,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ui.ListanElmoshaf.ListanQuranActivty"></activity>
-        <activity android:name=".ui.ListanElmoshaf.ListanElmoshafActivity" />
-        <activity android:name=".ui.Azkar.AzkarlListan.ListanActivty" />
-        <activity android:name=".ui.qablaWSebha.QablaWSebhaSwitch" />
-        <activity android:name=".ui.prayerTime.PrayerTime" />
-        <activity android:name=".ui.Azkar.SwitchActivity" />
-        <activity android:name=".ui.elmoshaf.SouraContentActivity" />
-        <activity android:name=".ui.elmoshaf.ElmoshafActivity" />
-        <activity android:name=".ui.ahadeth.AhadethActivity" />
-        <activity android:name=".ui.radio.RadioActivity" />
-        <activity android:name=".ui.SplashActivity"
-            android:exported="true">
+        <activity
+            android:name=".app.presentation.main.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.IntroActivity.IntroActivity" />
-        <activity android:name=".ui.home.MainActivity" />
     </application>
 
 </manifest>

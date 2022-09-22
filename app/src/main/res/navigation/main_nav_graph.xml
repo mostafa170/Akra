@@ -5,6 +5,13 @@
     android:id="@+id/main_nav_graph.xml"
     app:startDestination="@id/onBoardFragment">
 
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.kamel.akra.app.presentation.onBoard.OnboardFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_onboard" >
 
+
+    </fragment>
 
 </navigation>
