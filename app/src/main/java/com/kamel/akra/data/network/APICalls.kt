@@ -1,5 +1,7 @@
 package com.kamel.akra.data.network
 
+import com.kamel.akra.data.models.PrayersSuccessModel
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,4 +29,7 @@ interface APICalls {
 //        @Header("lang") lang: String?,
 //        @Field("reader_id") reader_id: Int
 //    ): Call<ResponseQuran?>?
+
+    @GET("v1/calendar?")
+    fun downloadMonthPrayersAsync(@QueryMap queries: Map<String, String>): Deferred<PrayersSuccessModel>
 }

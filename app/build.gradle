@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
@@ -49,6 +49,7 @@ dependencies {
 
     // For responsive layouts
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
     // ViewModels and LiveData
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
