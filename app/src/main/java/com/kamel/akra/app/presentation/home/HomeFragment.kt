@@ -5,16 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kamel.akra.R
-
+import androidx.fragment.app.viewModels
+import com.kamel.akra.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val binding = FragmentHomeBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+
+        viewModel.goToScreen.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    0 ->
+                    1 ->
+                    2 ->
+                    3 ->
+                }
+            }
+        }
+
+        return binding.root
     }
 }

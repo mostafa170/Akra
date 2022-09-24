@@ -1,46 +1,6 @@
 <resources>
     <string name="app_name">اقرأ</string>
     <string name="img">img</string>
-    ///splash
-    <string name="label_splash">طريقك الي الهدية</string>
-    //intro page
-    <string name="label_intro_activity_Skip">تخطي</string>
-    <string name="label_intro_activity_get_start">بداية التطبيق</string>
-    <string name="label_intro_activity_next">التالى</string>
-    //main
-    <string name="labal_main_activtiy_header_page">الرئيسية</string>
-    <string name="labal_main_activty_elmoshf">المصحف</string>
-    <string name="labal_main_activity_elmoshf_listen">"استماع للقران "</string>
-    <string name="labal_main_activity_radio">محطة القران الكريم</string>
-    <string name="labal_main_activity_btn_ahdes">احاديث</string>
-    <string name="labal_main_activity_azkar">الاذكار</string>
-    <string name="laba_main_activtiy_elsabha">القبلة و السبحة</string>
-    <string name="laba_main_activtiy_prayer">مواقيت الصلاة</string>
-    //radio
-    <string name="labal_actovoty_radio_swipe">مرر يمين لجهه اليسار لاختيار القناة</string>
-    <string name="labal_radio_activtiy_header_page">العودة للرئيسية</string>
-    ////soura_content_activtiy
-    <string name="labal_soura_content_activtiy_header_page">العودة</string>
-
-    <string name="cannot_connect_to_server">لا يوجد اتصال بالنترنت</string>
-    <string name="error">خطأ</string>
-    <string name="loading">تحميل</string>
-    <string name="please_wait">انتظر قليلا</string>
-    <string name="radio">محطة القران الكريم</string>
-    <string name="cannot_play_channel">لا يمكنك تشغل القناة</string>
-    <string name="ok">حسنا</string>
-
-    ///azkar
-    <string name="title_azkar">الاذكار</string>
-    <string name="title_listan_azkar">تسميع الاذكار</string>
-
-    <string name="title_qabla">القبلة</string>
-    <string name="title_sebha">السبحة الالكترونية</string>
-    <string name="sebha_img">sebha Img</string>
-    <string name="refresh_icon">refresh icon</string>
-
-    <string name="tsbeh_sum">مجموع التسبيحات</string>
-    <string name="tsbeha">التسبيحة</string>
 
     ///
     <array name="tsbeh_array">
@@ -50,24 +10,7 @@
     </array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="label_next_prayer">يُرفع آذان المغرب في تمام الساعة</string>
 
-    <string name="compass_dial" translatable="false">Compass Dial</string>
-    <string name="compass_hands" translatable="false">Compass Hands</string>
-
-    <string name="warning">warning</string>
-    <string name="message_request_location_permission">we need to access your location to show nearby coffe shops</string>
-    <string name="label_prayer_Fajr">الفجر</string>
-    <string name="label_prayer_Sunrise">الشروق</string>
-    <string name="label_prayer_Dhuhr">الظهر</string>
-    <string name="label_prayer_Asr">العصر</string>
-    <string name="label_prayer_Maghrib">المغرب</string>
-    <string name="label_prayer_Isha">العشاء</string>
-    <string name="zero">0:00</string>
-    <string name="str_elkara_elshayhk">القارء الشيخ</string>
-    <string name="str_name_elshayhk">احمد علي العجمي</string>
-    <string name="there_is_sora">لا يوجد سورة</string>
 
 </resources>

@@ -1,14 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".app.presentation.home.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.kamel.akra.app.presentation.home.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@drawable/background"
+        tools:context=".app.presentation.home.HomeFragment">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/text_view_next_prayer"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            tools:text="@string/label_next_prayer"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/color_707070"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_next_prayer_time"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_24ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer"
+            tools:text="‏06:55 م" />
+
+
+        <TextView
+            android:id="@+id/text_view_next_prayer_watch"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_time"
+            tools:text="‏ 07:25:03 مُتبقية حسب توقيت موقعك الحالي" />
+
+
+        <TextView
+            android:id="@+id/text_view_masbaha"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="المسبحة"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/_14ssp"
+            app:drawableTopCompat="@drawable/ic_mesbaha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_watch" />
+
+        <View
+            android:id="@+id/view_line1"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@color/color_707070"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -22,8 +22,7 @@
             android:name=".app.presentation.main.MainActivity"
             android:configChanges="orientation"
             android:exported="true"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/AppTheme.Launcher">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
