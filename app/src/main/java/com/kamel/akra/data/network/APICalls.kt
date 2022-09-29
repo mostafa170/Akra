@@ -1,15 +1,16 @@
 package com.kamel.akra.data.network
 
+import com.kamel.akra.data.models.RadioChannelResponse
 import com.kamel.akra.data.models.PrayersSuccessModel
 import kotlinx.coroutines.Deferred
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 
 interface APICalls {
 
-//    @GET("radio/radio_ar.json")
-//    fun getRadioChannels(): Call<RadiosResponse?>?
+    @GET("radio/radio_ar.json")
+    fun getRadioChannelsAsync(): Deferred<Response<RadioChannelResponse>>
 //
 //    @POST("Azkar.php")
 //    fun getAzkarListan(): Call<List<AzkarItemData?>?>?

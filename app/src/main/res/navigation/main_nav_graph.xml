@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph.xml"
-    app:startDestination="@id/onBoardFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/onBoardFragment"
@@ -25,7 +25,65 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" >
 
+        <action
+            android:id="@+id/action_to_sebhaFragment"
+            app:destination="@id/sebhaFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
 
+        <action
+            android:id="@+id/action_to_qiblaFragment"
+            app:destination="@id/qiblaFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_prayersFragment"
+            app:destination="@id/prayersFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_radioFragment"
+            app:destination="@id/radioFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/sebhaFragment"
+        android:name="com.kamel.akra.app.presentation.sebha.SebhaFragment"
+        android:label="SebhaFragment"
+        tools:layout="@layout/fragment_sebha" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/qiblaFragment"
+        android:name="com.kamel.akra.app.presentation.qibla.QiblaFragment"
+        android:label="QiblaFragment"
+        tools:layout="@layout/fragment_qibla" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/prayersFragment"
+        android:name="com.kamel.akra.app.presentation.prayer.PrayersFragment"
+        android:label="PrayersFragment"
+        tools:layout="@layout/fragment_prayers" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/radioFragment"
+        android:name="com.kamel.akra.app.presentation.radio.RadioFragment"
+        android:label="RadioFragment"
+        tools:layout="@layout/fragment_radio" >
     </fragment>
 
 </navigation>

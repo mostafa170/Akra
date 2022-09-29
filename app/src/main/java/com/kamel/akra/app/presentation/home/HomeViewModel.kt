@@ -9,10 +9,12 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(): ViewModel(){
 
-    private val _goToScreen = MutableLiveData<Int>()
-    val goToScreen: LiveData<Int>
+    private val _goToScreen = MutableLiveData<Int?>()
+    val goToScreen: LiveData<Int?>
         get() = _goToScreen
-
+    fun restScreen(){
+        _goToScreen.value = null
+    }
     fun setGoToScreen(screen: Int) {
         _goToScreen.value = screen
     }

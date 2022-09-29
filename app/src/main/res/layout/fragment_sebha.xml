@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.kamel.akra.app.presentation.sebha.SebhaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".app.presentation.sebha.SebhaFragment">
+
+        <ImageView
+            android:id="@+id/image_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:onClick="@{() -> viewModel.onBackClicked()}"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/img" />
+
+        <TextView
+            android:id="@+id/text_view_pageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/label_masbeha"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_20ssp"
+            style="@style/MyTextViewStyleRegular"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_back"
+            app:layout_constraintTop_toTopOf="@+id/image_view_back" />
+
+        <TextView
+            android:id="@+id/text_view_choose_masbha"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:text="@string/label_choose_sebha"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_back" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_next_booking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_14sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:background="@drawable/_custom_bg_curve"
+            android:backgroundTint="@color/colorWhite"
+            android:onClick="@{() -> viewModel.onSelectionSebhaClicked()}"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_choose_masbha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_choose_masbha">
+
+            <TextView
+                android:id="@+id/text_view_sebha_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_6sdp"
+                android:textColor="@color/color_6992AC"
+                android:drawablePadding="@dimen/_10sdp"
+                android:textSize="@dimen/_16ssp"
+                style="@style/MyTextViewStyleRegular"
+                android:hint="@string/label_sobhan_allah"
+                app:drawableStartCompat="@drawable/ic_down_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="سبحان الله" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/text_view_count"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:background="@drawable/_cutom_bg_circle"
+            android:drawablePadding="@dimen/_10sdp"
+            android:elevation="@dimen/_14sdp"
+            android:gravity="center"
+            android:padding="@dimen/_24sdp"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_17ssp"
+            android:text="@{@string/label_sebha_count(viewModel.count)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_next_booking"
+            tools:text="132\n تسبيحة" />
+
+        <TextView
+            android:id="@+id/text_view_count_all"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:gravity="center"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_17ssp"
+            android:text="@{@string/label_sebha_sum_all(viewModel.countSumAll)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_count"
+            tools:text="إجمالي التسبيحات : تسبيحة" />
+
+        <ImageView
+            android:id="@+id/image_view_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:padding="@dimen/_5sdp"
+            android:contentDescription="@string/img"
+            android:onClick="@{() -> viewModel.plusSebhaCount()}"
+            android:src="@drawable/ic_add"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_count_all"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_count_all" />
+
+        <ImageView
+            android:id="@+id/image_view_rest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:padding="@dimen/_5sdp"
+            android:contentDescription="@string/img"
+            android:onClick="@{() -> viewModel.restSebha(true)}"
+            android:src="@drawable/ic_reset"
+            app:layout_constraintStart_toStartOf="@+id/text_view_count_all"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_count_all" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

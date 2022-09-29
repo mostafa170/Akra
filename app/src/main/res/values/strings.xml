@@ -11,6 +11,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_next_prayer">يُرفع آذان المغرب في تمام الساعة</string>
+    <string name="label_masbeha">المسبحة</string>
+    <string name="label_quran">القرآن الكريم</string>
+    <string name="label_tilawa">التلاوات</string>
+    <string name="label_azkar">الأذكار</string>
+    <string name="label_qibla">اتجاه القبلة</string>
+    <string name="label_radio">الإذاعة</string>
+    <string name="label_prayer_time">مواقيت الصلاة</string>
+    <string name="label_hades">الأحاديث النبوية</string>
+    <string name="label_sebha_count">%s \nتسبيحة</string>
+    <string name="label_sebha_sum_all">إجمالي التسبيحات : %s تسبيحة</string>
+    <string name="label_choose_sebha">اختر التسبيحة</string>
+    <string name="label_sobhan_allah">سبحان الله</string>
+    <string name="label_open_location_for_qibla">قم بتشغيل خدمة الموقع في جهازك لتتمكن من تحديد اتجاه القبلة</string>
 
 
 </resources>
