@@ -37,13 +37,14 @@ class HomeFragment : Fragment() {
         viewModel.goToScreen.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
-                    //1 -> findNavController().navigate(HomeFragmentDirections.actionToQiblaFragment())
+                    1 -> findNavController().navigate(HomeFragmentDirections.actionToTilawaFragment())
                     2 -> findNavController().navigate(HomeFragmentDirections.actionToQiblaFragment())
                     3 -> findNavController().navigate(HomeFragmentDirections.actionToSebhaFragment())
                     4 -> findNavController().navigate(HomeFragmentDirections.actionToRadioFragment())
-                    //5 -> findNavController().navigate(HomeFragmentDirections.actionToSebhaFragment())
-                    //6 -> findNavController().navigate(HomeFragmentDirections.actionToSebhaFragment())
-                    7 -> findNavController().navigate(HomeFragmentDirections.actionToPrayersFragment())
+                    5 -> findNavController().navigate(HomeFragmentDirections.actionToQuranFragment())
+                    6 -> findNavController().navigate(HomeFragmentDirections.actionToAzkarFragment())
+                    7 -> findNavController().navigate(HomeFragmentDirections.actionToHadethFragment())
+                    8 -> findNavController().navigate(HomeFragmentDirections.actionToPrayersFragment())
                 }
                 viewModel.restScreen()
             }

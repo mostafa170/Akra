@@ -56,6 +56,39 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_quranFragment"
+            app:destination="@id/quranFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_azkarFragment"
+            app:destination="@id/azkarFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_hadethFragment"
+            app:destination="@id/hadethFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action
+            android:id="@+id/action_to_tilawaFragment"
+            app:destination="@id/tilawaFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
     </fragment>
 
     <fragment
@@ -85,5 +118,36 @@
         android:label="RadioFragment"
         tools:layout="@layout/fragment_radio" >
     </fragment>
+
+    <fragment
+        android:id="@+id/quranFragment"
+        android:name="com.kamel.akra.app.presentation.quran.QuranFragment"
+        android:label="QuranFragment"
+        tools:layout="@layout/fragment_quran" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/azkarFragment"
+        android:name="com.kamel.akra.app.presentation.azkar.AzkarFragment"
+        android:label="AzkarFragment"
+        tools:layout="@layout/fragment_azkar" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/hadethFragment"
+        android:name="com.kamel.akra.app.presentation.hadeth.HadethFragment"
+        android:label="HadethFragment"
+        tools:layout="@layout/fragment_hadeth" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/tilawaFragment"
+        android:name="com.kamel.akra.app.presentation.tilawa.TilawaFragment"
+        android:label="TilawaFragment"
+        tools:layout="@layout/fragment_tilawa" >
+    </fragment>
+
+
+
 
 </navigation>

@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.kamel.akra.app.presentation.main.MainActivityEventsListener
 import com.kamel.akra.databinding.FragmentRadioBinding
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.IOException
 
 
 @AndroidEntryPoint
@@ -83,37 +82,11 @@ class RadioFragment : Fragment() {
             }
         }
 
-        viewModel.soundUrl.observe(viewLifecycleOwner){
-            if (it != null){
-                playRadio(it)
-            }else {
-                mediaPlayer.stop()
-                viewModel.onStopSound()
-
-            }
-        }
-
         viewModel.play.observe(viewLifecycleOwner){
             if (it != null && it)
                 Log.e("TAG", "onCreateView: $it" )
         }
 
         return binding.root
-    }
-
-    fun playRadio(URL: String) {
-        mediaPlayer.stop()
-        viewModel.onStopSound()
-        try {
-            mediaPlayer.setDataSource(URL)
-            mediaPlayer.prepareAsync()
-            mediaPlayer.setOnPreparedListener {
-                mp -> mp.start()
-                viewModel.onPlaySound()
-
-            }
-        } catch (e: IOException) {
-            Log.e("TAG", "playRadio: ${e.message}" )
-        }
     }
 }

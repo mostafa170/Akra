@@ -14,14 +14,6 @@ class UnauthenticatedFailure: AppFailure(){
     override fun toErrorString(): String = "UnauthenticatedFailure"
 }
 
-class AcceptOrderFailure: AppFailure(){
-    override fun toErrorString(): String = "AcceptOrderFailure"
-}
-
-class UserNotVerifiedFailure: AppFailure(){
-    override fun toErrorString(): String = "UserNotVerifiedFailure"
-}
-
 class SomethingWentWrongFailure(private val message: String): AppFailure(){
     override fun toErrorString(): String = message
 }

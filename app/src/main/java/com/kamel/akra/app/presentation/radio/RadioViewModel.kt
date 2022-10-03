@@ -1,5 +1,7 @@
 package com.kamel.akra.app.presentation.radio
 
+import android.media.MediaPlayer
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,6 +20,8 @@ class RadioViewModel @Inject constructor(private val getRadioChannelsUseCase: Ge
 
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    private var mediaPlayer: MediaPlayer = MediaPlayer()
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -69,21 +74,20 @@ class RadioViewModel @Inject constructor(private val getRadioChannelsUseCase: Ge
         _play.value = false
     }
 
+    private val _currentPlayingChannel = MutableLiveData<String?>()
+    val currentPlayingChannel: LiveData<String?>
+        get() = _currentPlayingChannel
 
-    private val _soundUrl = MutableLiveData<String>()
-    val soundUrl: LiveData<String>
+    private val _soundUrl = MutableLiveData<String?>()
+    val soundUrl: LiveData<String?>
         get() = _soundUrl
 
     private val _radioChannels = MutableLiveData<List<RadioStation>>()
     val radioChannels: LiveData<List<RadioStation>>
         get() = _radioChannels
 
-    fun playRadioAudio(URL: String){
-        if (_play.value == true)
-            _soundUrl.value = URL
-    }
     init {
-        onStopSound()
+        closeRadio()
         getRadioChannelsApi()
     }
 
@@ -97,6 +101,46 @@ class RadioViewModel @Inject constructor(private val getRadioChannelsUseCase: Ge
             })
             _loading.postValue(false)
         }
+    }
+
+    fun playRadio(uRL: String, isPlaying:Boolean, isSameChannel:Boolean) {
+        _soundUrl.value = uRL
+        if (!isPlaying){
+            Log.e("TAG", "playRadio: startNew" )
+            onPlaySound()
+            _currentPlayingChannel.value = uRL
+            playSoundUrl(uRL)
+        }else{
+            if (isSameChannel){
+                Log.e("TAG", "playRadio: SameChannel" )
+                closeRadio()
+            }else{
+                Log.e("TAG", "playRadio:  not SameChannel" )
+                mediaPlayer.stop()
+                playSoundUrl(uRL)
+            }
+        }
+    }
+
+    private fun closeRadio(){
+        onStopSound()
+        _currentPlayingChannel.value = null
+        _soundUrl.value = null
+        mediaPlayer.stop()
+    }
+
+    private fun playSoundUrl(uRL: String){
+        try {
+            mediaPlayer.setDataSource(uRL)
+            mediaPlayer.prepareAsync()
+            mediaPlayer.setOnPreparedListener {
+                    mp -> mp.start()
+                _currentPlayingChannel.value = uRL
+            }
+        } catch (e: IOException) {
+            Log.e("TAG", "playRadio: ${e.message}" )
+        }
+
     }
 
     override fun onCleared() {

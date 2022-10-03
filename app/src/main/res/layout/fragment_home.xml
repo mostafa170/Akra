@@ -195,7 +195,7 @@
             android:text="@string/label_prayer_time"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(7)}"
+            android:onClick="@{() -> viewModel.setGoToScreen(8)}"
             app:drawableTopCompat="@drawable/ic_times"
             app:layout_constraintStart_toStartOf="@+id/text_view_azkar"
             app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
@@ -221,7 +221,7 @@
             android:text="@string/label_hades"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(8)}"
+            android:onClick="@{() -> viewModel.setGoToScreen(7)}"
             app:drawableTopCompat="@drawable/ic_hadees"
             app:layout_constraintEnd_toEndOf="@+id/text_view_radio"
             app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
