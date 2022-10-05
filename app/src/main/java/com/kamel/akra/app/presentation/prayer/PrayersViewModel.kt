@@ -40,6 +40,17 @@ class PrayersViewModel @Inject constructor(private val resources: Resources): Vi
         _back.value = false
     }
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
+
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?>
+        get() = _error
+    fun onErrorMessageShown() {
+        _error.value = null
+    }
+
     private val _hijriAdjustmentClicked = MutableLiveData<Boolean>()
     val hijriAdjustmentClicked: LiveData<Boolean>
         get() = _hijriAdjustmentClicked

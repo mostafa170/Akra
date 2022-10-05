@@ -1,7 +1,6 @@
 package com.kamel.akra.app.presentation.radio
 
 import android.content.ContextWrapper
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,8 +19,6 @@ class RadioFragment : Fragment() {
 
     private val viewModel: RadioViewModel by viewModels()
     private var currentPosition: Int = 0
-    private lateinit var mediaPlayer: MediaPlayer
-
 
     private val mainActivityEventsListener: MainActivityEventsListener by lazy {
         requireNotNull(context) {
@@ -39,7 +36,6 @@ class RadioFragment : Fragment() {
         binding.viewModel = viewModel
         binding.currentPosition = currentPosition
         binding.executePendingBindings()
-        mediaPlayer = MediaPlayer()
 
         viewModel.back.observe(viewLifecycleOwner) {
             if (it != null && it) {
