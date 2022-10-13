@@ -15,6 +15,12 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
 
+
+enum class PlayerStatus{
+    PLAY,
+    STOP,
+}
+
 @HiltViewModel
 class RadioViewModel @Inject constructor(private val getRadioChannelsUseCase: GetRadioChannelsUseCase): ViewModel(){
 

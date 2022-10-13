@@ -131,6 +131,15 @@
         android:name="com.kamel.akra.app.presentation.azkar.AzkarFragment"
         android:label="AzkarFragment"
         tools:layout="@layout/fragment_azkar" >
+
+        <action
+            android:id="@+id/action_to_azkarCategoryList"
+            app:destination="@id/azkarCategoryListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
     </fragment>
 
     <fragment
@@ -146,6 +155,15 @@
         android:label="TilawaFragment"
         tools:layout="@layout/fragment_tilawa" >
     </fragment>
+
+
+    <fragment
+        android:id="@+id/azkarCategoryListFragment"
+        android:name="com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarCategoryListFragment"
+        android:label="AzkarCategoryListFragment"
+        tools:layout="@layout/fragment_azkar_category_list" >
+    </fragment>
+
 
 
 

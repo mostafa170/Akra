@@ -24,6 +24,15 @@
     <string name="label_choose_sebha">اختر التسبيحة</string>
     <string name="label_sobhan_allah">سبحان الله</string>
     <string name="label_open_location_for_qibla">قم بتشغيل خدمة الموقع في جهازك لتتمكن من تحديد اتجاه القبلة</string>
+    <string name="label_evening">عند المساء</string>
+    <string name="label_morning">عند الصباح</string>
+    <string name="label_my_zekr">أذكارى</string>
+    <string name="label_doaa_nabwy">أدعية نبوية</string>
+    <string name="label_sleeping">عند النوم</string>
+    <string name="label_wake_up">عند الأستيقاظ</string>
+    <string name="label_doaa_quran">أدعية قرآنية</string>
+    <string name="label_after_tasleem">بعد التسليم</string>
+    <string name="label_tsabeh">تسابيح</string>
 
 
 </resources>

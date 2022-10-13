@@ -45,5 +45,10 @@ val locationPermissions = arrayOf(
 var cameraPermissions = arrayOf(Manifest.permission.CAMERA)
 var storagePermissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
 
+const val  ACTION_PLAY = "com.valdioveliu.valdio.audioplayer.ACTION_PLAY"
+const val ACTION_PAUSE = "com.valdioveliu.valdio.audioplayer.ACTION_PAUSE"
+const val ACTION_PREVIOUS = "com.valdioveliu.valdio.audioplayer.ACTION_PREVIOUS"
+const val ACTION_NEXT = "com.valdioveliu.valdio.audioplayer.ACTION_NEXT"
+const val ACTION_STOP = "com.valdioveliu.valdio.audioplayer.ACTION_STOP"
 
 

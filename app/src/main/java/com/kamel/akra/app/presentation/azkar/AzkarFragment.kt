@@ -5,56 +5,50 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kamel.akra.R
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.kamel.akra.app.presentation.home.HomeFragmentDirections
+import com.kamel.akra.databinding.FragmentAzkarBinding
+import com.kamel.akra.domain.entities.AzkarNavigationItem
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AzkarFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class AzkarFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModel: AzkarViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_azkar, container, false)
+        val binding = FragmentAzkarBinding.inflate(inflater)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+
+        viewModel.goToScreen.observe(viewLifecycleOwner) {
+            if (it != null) {
+                when (it) {
+                    1 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    2 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    3 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    4 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    5 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    6 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    7 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    8 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    9 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                }
+                viewModel.restScreen()
+            }
+
+        }
+
+
+        return binding.root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AzkarFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AzkarFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
