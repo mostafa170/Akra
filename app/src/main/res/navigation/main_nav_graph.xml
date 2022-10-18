@@ -162,6 +162,11 @@
         android:name="com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarCategoryListFragment"
         android:label="AzkarCategoryListFragment"
         tools:layout="@layout/fragment_azkar_category_list" >
+
+        <argument
+            android:name="position"
+            app:argType="integer" />
+
     </fragment>
 
 

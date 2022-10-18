@@ -3,12 +3,21 @@ package com.kamel.akra.app.presentation.azkar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kamel.akra.domain.entities.AzkarNavigationItem
+import com.kamel.akra.domain.entities.AzkarCategory
+import com.kamel.akra.domain.entities.Zekr
+import com.kamel.akra.domain.usecases.azkar.GetAzkarUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AzkarViewModel @Inject constructor(): ViewModel(){
+class AzkarViewModel @Inject constructor(private val getAzkarUseCase: GetAzkarUseCase): ViewModel(){
+
+    private val viewModelJob = SupervisorJob()
+    private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -40,4 +49,23 @@ class AzkarViewModel @Inject constructor(): ViewModel(){
     fun setGoToScreen(screen: Int) {
         _goToScreen.value = screen
     }
+
+
+    private val _azkarCategory = MutableLiveData<AzkarCategory>()
+    val azkarCategory: LiveData<AzkarCategory>
+        get() = _azkarCategory
+
+    fun getAzkarFromAsset(){
+        viewModelScope.launch {
+            _loading.postValue(true)
+            getAzkarUseCase.invoke().fold({
+                _error.postValue(it.toErrorString())
+            },{
+                _azkarCategory.postValue(it)
+            })
+            _loading.postValue(false)
+        }
+    }
+
+
 }

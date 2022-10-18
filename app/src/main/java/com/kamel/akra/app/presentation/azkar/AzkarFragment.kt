@@ -30,15 +30,15 @@ class AzkarFragment : Fragment() {
         viewModel.goToScreen.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
-                    1 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    2 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    3 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    4 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    5 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    6 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    7 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    8 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
-                    9 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    //1 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    2 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(0))
+                    3 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(1))
+                    4 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(2))
+                    5 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(3))
+                    6 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(4))
+                    7 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(5))
+                    8 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(6))
+                    9 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(7))
                 }
                 viewModel.restScreen()
             }
