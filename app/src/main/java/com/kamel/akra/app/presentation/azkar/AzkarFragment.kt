@@ -27,6 +27,13 @@ class AzkarFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
+        viewModel.back.observe(viewLifecycleOwner){
+            if (it !=null && it){
+                findNavController().navigateUp()
+                viewModel.onBackNavigated()
+            }
+        }
+
         viewModel.goToScreen.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {

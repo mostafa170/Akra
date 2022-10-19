@@ -1,5 +1,6 @@
 package com.kamel.akra.app.presentation.azkar
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -62,6 +63,7 @@ class AzkarViewModel @Inject constructor(private val getAzkarUseCase: GetAzkarUs
                 _error.postValue(it.toErrorString())
             },{
                 _azkarCategory.postValue(it)
+                Log.e("TAG", "getAzkarFromAsset: $it" )
             })
             _loading.postValue(false)
         }

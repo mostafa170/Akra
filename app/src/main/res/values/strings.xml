@@ -33,6 +33,7 @@
     <string name="label_doaa_quran">أدعية قرآنية</string>
     <string name="label_after_tasleem">بعد التسليم</string>
     <string name="label_tsabeh">تسابيح</string>
+    <string name="label_zekr_count">عدد المرات: %s</string>
 
 
 </resources>
