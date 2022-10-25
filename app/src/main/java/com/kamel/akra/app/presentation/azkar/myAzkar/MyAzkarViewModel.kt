@@ -1,12 +1,11 @@
-package com.kamel.akra.app.presentation.azkar
+package com.kamel.akra.app.presentation.azkar.myAzkar
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kamel.akra.domain.entities.AzkarCategory
 import com.kamel.akra.domain.entities.Zekr
-import com.kamel.akra.domain.usecases.azkar.GetAzkarUseCase
+import com.kamel.akra.domain.usecases.azkar.GetLocalAzkarUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,14 +14,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AzkarViewModel @Inject constructor(private val getAzkarUseCase: GetAzkarUseCase): ViewModel(){
+class MyAzkarViewModel @Inject constructor(private val getLocalAzkarUseCase: GetLocalAzkarUseCase): ViewModel(){
 
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _loading = MutableLiveData<Boolean>()
-    val loading: LiveData<Boolean>
-        get() = _loading
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?>
@@ -41,28 +37,38 @@ class AzkarViewModel @Inject constructor(private val getAzkarUseCase: GetAzkarUs
         _back.value = false
     }
 
-    private val _goToScreen = MutableLiveData<Int?>()
-    val goToScreen: LiveData<Int?>
-        get() = _goToScreen
-    fun restScreen(){
-        _goToScreen.value = null
+    private val _addZekr = MutableLiveData<Boolean>()
+    val addZekr: LiveData<Boolean>
+        get() = _addZekr
+    fun onAddZekrClicked() {
+        _addZekr.value = true
     }
-    fun setGoToScreen(screen: Int) {
-        _goToScreen.value = screen
+    fun onAddZekrDone() {
+        _addZekr.value = false
     }
 
-    private val _azkarCategory = MutableLiveData<AzkarCategory>()
-    val azkarCategory: LiveData<AzkarCategory>
-        get() = _azkarCategory
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean>
+        get() = _loading
 
-    fun getAzkarFromAsset(){
+    private val _localAzkar = MutableLiveData<List<Zekr>>()
+    val localAzkar: LiveData<List<Zekr>>
+        get() = _localAzkar
+
+
+    init {
+        getAzkarLocal()
+    }
+
+
+    fun getAzkarLocal(){
         viewModelScope.launch {
             _loading.postValue(true)
-            getAzkarUseCase.invoke().fold({
+            getLocalAzkarUseCase.invoke().fold({
                 _error.postValue(it.toErrorString())
             },{
-                _azkarCategory.postValue(it)
-                Log.e("TAG", "getAzkarFromAsset: $it" )
+                _localAzkar.postValue(it)
+                Log.e("TAG", "getAzkarLocal: $it" )
             })
             _loading.postValue(false)
         }

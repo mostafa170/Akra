@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.kamel.akra.domain.entities.Prayer
+import com.kamel.akra.domain.entities.Zekr
 
 @Dao
 interface PrayersDao {
@@ -21,8 +22,19 @@ interface PrayersDao {
 
 }
 
+@Dao
+interface AzkarDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertZekr(vararg zekr: Zekr)
+
+    @Query("select * from Zekr")
+    fun getAllZekr(): List<Zekr>
+
+}
+
 abstract class AppDatabase : RoomDatabase(){
     abstract val prayersDao: PrayersDao
+    abstract val azkarDao: AzkarDao
 }
 
 
@@ -34,8 +46,7 @@ fun getDatabase(context: Context): AppDatabase{
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
-                "akraa_app_database"
-            ).createFromAsset("database/akraa_app_database10.db")
+                "akraa_app_database")
                 .build()
         }
     }

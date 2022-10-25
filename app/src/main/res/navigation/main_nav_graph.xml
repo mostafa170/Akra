@@ -139,6 +139,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_to_myAzkarFragment"
+            app:destination="@id/myAzkarFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
 
     </fragment>
 
@@ -169,6 +176,12 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/myAzkarFragment"
+        android:name="com.kamel.akra.app.presentation.azkar.myAzkar.MyAzkarFragment"
+        android:label="MyAzkarFragment"
+        tools:layout="@layout/fragment_my_azkar" >
+    </fragment>
 
 
 

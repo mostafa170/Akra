@@ -37,7 +37,7 @@ class AzkarFragment : Fragment() {
         viewModel.goToScreen.observe(viewLifecycleOwner) {
             if (it != null) {
                 when (it) {
-                    //1 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList())
+                    1 -> findNavController().navigate(AzkarFragmentDirections.actionToMyAzkarFragment())
                     2 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(0))
                     3 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(1))
                     4 -> findNavController().navigate(AzkarFragmentDirections.actionToAzkarCategoryList(2))

@@ -34,6 +34,9 @@
     <string name="label_after_tasleem">بعد التسليم</string>
     <string name="label_tsabeh">تسابيح</string>
     <string name="label_zekr_count">عدد المرات: %s</string>
+    <string name="label_add_zekr">أضِف الذِكر الخاص بك</string>
+    <string name="label_save">حفظ</string>
+    <string name="label_cancel">الغاء</string>
 
 
 </resources>
