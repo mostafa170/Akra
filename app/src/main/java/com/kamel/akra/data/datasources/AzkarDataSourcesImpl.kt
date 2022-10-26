@@ -41,7 +41,10 @@ class AzkarDataSourcesImpl @Inject constructor(private val dispatcher: Coroutine
             }
         }
 
-
+    override suspend fun addLocalAzkar(zekr: Zekr) =
+        withContext(dispatcher) {
+            database.azkarDao.insertZekr(zekr)
+        }
 }
 
 

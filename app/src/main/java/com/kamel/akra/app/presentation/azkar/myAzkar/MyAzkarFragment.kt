@@ -56,6 +56,7 @@ class MyAzkarFragment : Fragment() {
 
         addZekrDialogBinding.onConfirmClickedListener = View.OnClickListener {
             //TODO insert to database
+
         }
 
 
