@@ -11,10 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kamel.akra.R
+import com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarAdapter
 import com.kamel.akra.app.presentation.main.MainActivityEventsListener
 import com.kamel.akra.app.utilsView.MyDialog
 import com.kamel.akra.databinding.DialogAddZekrBinding
 import com.kamel.akra.databinding.FragmentMyAzkarBinding
+import com.kamel.akra.domain.entities.Zekr
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,9 +58,15 @@ class MyAzkarFragment : Fragment() {
 
         addZekrDialogBinding.onConfirmClickedListener = View.OnClickListener {
             //TODO insert to database
+            val zekr = Zekr(addZekrDialogBinding.editTextContent.text.toString(),
+            addZekrDialogBinding.editTextCount.text.toString().toInt(),
+            "")
+            viewModel.addZekrLocal(zekr)
+            dialogAddZekr.dismiss()
 
         }
 
+        val adapterAzkar = AzkarAdapter()
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){
@@ -87,8 +95,15 @@ class MyAzkarFragment : Fragment() {
                 mainActivityEventsListener.hideLoading()
         }
 
+        viewModel.localAzkar.observe(viewLifecycleOwner){
+            if (it.isNotEmpty() && it !=null)
+                adapterAzkar.submitList(it)
+        }
+
+        binding.recyclerViewAzkar.apply {
+            adapter = adapterAzkar
+        }
+
         return binding.root
     }
-
-
 }

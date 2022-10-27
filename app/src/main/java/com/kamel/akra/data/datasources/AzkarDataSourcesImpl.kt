@@ -1,15 +1,14 @@
 package com.kamel.akra.data.datasources
 
-import androidx.room.RoomDatabase
+import android.app.Application
 import arrow.core.Either
 import com.google.gson.Gson
 import com.kamel.akra.data.models.AzkarResponse
 import com.kamel.akra.data.models.toEntityAzkarDomain
-import com.kamel.akra.data.room.AppDatabase
+import com.kamel.akra.data.room.getDatabase
 import com.kamel.akra.data.utils.AppFailure
 import com.kamel.akra.data.utils.FileUtils.getJsonDataFromAsset
 import com.kamel.akra.data.utils.SomethingWentWrongFailure
-import com.kamel.akra.data.utils.getErrors
 import com.kamel.akra.domain.entities.AzkarCategory
 import com.kamel.akra.domain.entities.Zekr
 import kotlinx.coroutines.CoroutineDispatcher
@@ -18,7 +17,7 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 
-class AzkarDataSourcesImpl @Inject constructor(private val dispatcher: CoroutineDispatcher, private val database: AppDatabase) :AzkarDataSources{
+class AzkarDataSourcesImpl @Inject constructor(private val dispatcher: CoroutineDispatcher, private val application: Application) :AzkarDataSources{
     override suspend fun getAzkar(): Either<AppFailure, AzkarCategory> =
         withContext(dispatcher) {
             val jsonFileString = getJsonDataFromAsset("azkar_list.json")
@@ -35,6 +34,7 @@ class AzkarDataSourcesImpl @Inject constructor(private val dispatcher: Coroutine
 
     override suspend fun getLocalAzkar(): Either<AppFailure, List<Zekr>> =
         withContext(dispatcher) {
+            val database = getDatabase(application)
             val list:List<Zekr> =  database.azkarDao.getAllZekr()
             list.let {
                 return@withContext Either.Right(list)
@@ -43,6 +43,7 @@ class AzkarDataSourcesImpl @Inject constructor(private val dispatcher: Coroutine
 
     override suspend fun addLocalAzkar(zekr: Zekr) =
         withContext(dispatcher) {
+            val database = getDatabase(application)
             database.azkarDao.insertZekr(zekr)
         }
 }

@@ -31,7 +31,7 @@ interface AzkarDao {
     fun getAllZekr(): List<Zekr>
 
 }
-
+@Database(entities = [Prayer::class, Zekr::class,], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){
     abstract val prayersDao: PrayersDao
     abstract val azkarDao: AzkarDao
@@ -44,7 +44,7 @@ fun getDatabase(context: Context): AppDatabase{
     synchronized(AppDatabase::class.java){
         if(!::INSTANCE.isInitialized){
             INSTANCE = Room.databaseBuilder(
-                context.applicationContext,
+                context,
                 AppDatabase::class.java,
                 "akraa_app_database")
                 .build()

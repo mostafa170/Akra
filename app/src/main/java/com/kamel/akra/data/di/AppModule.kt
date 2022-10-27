@@ -29,13 +29,13 @@ class AppModule {
     @Provides
     fun provideApplicationResources(app: MyApplication): Resources = app.resources
 
-    @Singleton
-    @Provides
-    fun provideRoomDataBase(@ApplicationContext app: Context):AppDatabase = Room.databaseBuilder(
-        app.applicationContext,
-        AppDatabase::class.java,
-        "akraa_app_database")
-        .build()
+//    @Singleton
+//    @Provides
+//    fun provideRoomDataBase(app: MyApplication) = Room.databaseBuilder(
+//        app,
+//        AppDatabase::class.java,
+//        "akraa_app_database")
+//        .build()
 
 
 }

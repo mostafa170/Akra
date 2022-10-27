@@ -9,6 +9,7 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        //getDatabase(this) //--AppDatabase_Impl does not exist
     }
 
     companion object{

@@ -15,6 +15,6 @@ class AzkarRepositoryImpl @Inject constructor(private val azkarDataSources: Azka
     override suspend fun getLocalAzkar(): Either<AppFailure, List<Zekr>> =
         azkarDataSources.getLocalAzkar()
 
-    override suspend fun addLocalAzkar(zekr: Zekr): Either<AppFailure, Boolean> =
+    override suspend fun addLocalAzkar(zekr: Zekr)=
         azkarDataSources.addLocalAzkar(zekr)
 }

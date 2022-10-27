@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kamel.akra.domain.entities.Zekr
+import com.kamel.akra.domain.usecases.azkar.AddZekrUseCase
 import com.kamel.akra.domain.usecases.azkar.GetLocalAzkarUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MyAzkarViewModel @Inject constructor(private val getLocalAzkarUseCase: GetLocalAzkarUseCase): ViewModel(){
+class MyAzkarViewModel @Inject constructor(private val getLocalAzkarUseCase: GetLocalAzkarUseCase,
+private val addZekrUseCase: AddZekrUseCase): ViewModel(){
 
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -72,6 +74,13 @@ class MyAzkarViewModel @Inject constructor(private val getLocalAzkarUseCase: Get
             })
             _loading.postValue(false)
         }
+    }
+
+    fun addZekrLocal(zekr: Zekr){
+        viewModelScope.launch {
+            addZekrUseCase.invoke(zekr)
+        }
+        getAzkarLocal()
     }
 
     override fun onCleared() {
