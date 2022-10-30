@@ -1,7 +1,6 @@
 package com.kamel.akra.data.di
 
 import android.app.Application
-import android.content.Context
 import com.kamel.akra.data.datasources.AzkarDataSources
 import com.kamel.akra.data.datasources.AzkarDataSourcesImpl
 import com.kamel.akra.data.repositories.AzkarRepositoryImpl

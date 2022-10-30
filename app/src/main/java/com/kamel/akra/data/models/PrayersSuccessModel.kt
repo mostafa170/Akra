@@ -1,5 +1,9 @@
 package com.kamel.akra.data.models
 
+import com.kamel.akra.app.utilsView.MyDate
+import com.kamel.akra.domain.entities.Prayer
+import java.util.*
+
 data class PrayersSuccessModel(
     val code: Int,
     val status: String,
@@ -35,3 +39,4 @@ data class Hijri(
     val date: String,
     val format: String
 )
+

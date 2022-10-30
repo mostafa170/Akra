@@ -22,8 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_40sdp"
-            android:text="@string/label_next_prayer"
+            tools:text="@string/label_next_prayer"
             android:textSize="@dimen/_16ssp"
+            android:text="@{@string/label_next_prayer(viewModel.upcomingPrayerName)}"
             android:textColor="@color/color_707070"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,23 +37,25 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_6992AC"
             android:textSize="@dimen/_24ssp"
+            android:text="@{viewModel.upcomingPrayerTime}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer"
-            android:text="‏06:55 م" />
+            tools:text="‏06:55 م" />
 
 
-        <TextView
+        <com.kamel.akra.app.utilsView.TextViewWithArabicDigits
             android:id="@+id/text_view_next_prayer_watch"
             style="@style/MyTextViewStyleRegular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_12ssp"
+            android:text="@{@string/label_next_prayer_reminder(viewModel.upcomingPrayerTimerText)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_time"
-            android:text="‏ 07:25:03 مُتبقية حسب توقيت موقعك الحالي" />
+            tools:text="‏ 07:25:03 مُتبقية حسب توقيت موقعك الحالي" />
 
 
         <TextView
@@ -61,12 +64,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:onClick="@{() -> viewModel.setGoToScreen(3)}"
             android:text="@string/label_masbeha"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(3)}"
             app:drawableTopCompat="@drawable/ic_mesbaha"
-            app:layout_constraintStart_toStartOf="@+id/text_view_next_prayer_watch"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_watch" />
 
         <View
@@ -100,12 +104,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_26sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:onClick="@{() -> viewModel.setGoToScreen(1)}"
             android:text="@string/label_tilawa"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(1)}"
             app:drawableTopCompat="@drawable/ic_tilawa"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_next_prayer_watch"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_watch" />
 
         <View
@@ -124,14 +129,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.setGoToScreen(6)}"
             android:text="@string/label_azkar"
             android:textColor="@color/color_707070"
             android:textSize="@dimen/_14ssp"
-            android:gravity="center"
-            android:onClick="@{() -> viewModel.setGoToScreen(6)}"
             app:drawableTopCompat="@drawable/ic_azkar"
             app:layout_constraintEnd_toEndOf="@+id/text_view_masbaha"
-            app:layout_constraintStart_toStartOf="@+id/text_view_next_prayer_watch"
+            app:layout_constraintStart_toStartOf="@+id/text_view_masbaha"
             app:layout_constraintTop_toBottomOf="@+id/text_view_masbaha" />
 
         <View

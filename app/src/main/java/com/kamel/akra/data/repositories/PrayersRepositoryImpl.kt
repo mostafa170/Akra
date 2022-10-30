@@ -9,12 +9,12 @@ import com.kamel.akra.domain.repositories.PrayersRepository
 import javax.inject.Inject
 
 class PrayersRepositoryImpl @Inject constructor(private val prayerDataSources: PrayerDataSources): PrayersRepository {
-    override suspend fun getNextUpcomingPrayer(): Either<AppFailure, LiveData<Prayer>> =
+    override suspend fun getNextUpcomingPrayer(): Either<AppFailure, Prayer> =
         prayerDataSources.getNextUpcomingPrayer()
 
     override suspend fun downloadPrayers(body: Map<String, String>): Either<AppFailure, Boolean> =
         prayerDataSources.downloadPrayers(body)
 
-    override suspend fun getDayPrayers(dayNumber: Int): Either<AppFailure, LiveData<List<Prayer>>> =
+    override suspend fun getDayPrayers(dayNumber: Int): Either<AppFailure, List<Prayer>> =
         prayerDataSources.getDayPrayers(dayNumber)
 }

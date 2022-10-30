@@ -7,8 +7,8 @@ import com.kamel.akra.domain.entities.Prayer
 
 interface PrayerDataSources {
 
-    suspend fun getNextUpcomingPrayer(): Either<AppFailure, LiveData<Prayer>>
+    suspend fun getNextUpcomingPrayer(): Either<AppFailure, Prayer>
     suspend fun downloadPrayers(body: Map<String, String>) : Either<AppFailure, Boolean>
-    suspend fun getDayPrayers(dayNumber: Int): Either<AppFailure, LiveData<List<Prayer>>>
+    suspend fun getDayPrayers(dayNumber: Int): Either<AppFailure, List<Prayer>>
 
 }

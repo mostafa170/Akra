@@ -12,13 +12,13 @@ interface PrayersDao {
     fun insertPrayer(vararg prayers: Prayer)
 
     @Query("SELECT * FROM prayer where timestamp >= (strftime('%s','now') * 1000) limit 1")
-    fun getUpcomingPrayer(): LiveData<Prayer>
+    fun getUpcomingPrayer(): Prayer
 
     @Query("select * from prayer where strftime('%d',datetime(timestamp / 1000, 'unixepoch')) = :dayNumber")
-    fun getDayPrayers(dayNumber: String): LiveData<List<Prayer>>
+    fun getDayPrayers(dayNumber: String): List<Prayer>
 
     @Query("select * from prayer")
-    fun getAll(): LiveData<List<Prayer>>
+    fun getAll(): List<Prayer>
 
 }
 

@@ -10,7 +10,8 @@
     </array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="label_next_prayer">يُرفع آذان المغرب في تمام الساعة</string>
+    <string name="label_next_prayer">يُرفع %s في تمام الساعة</string>
+    <string name="label_next_prayer_reminder">%s مُتبقية حسب توقيت موقعك الحالي</string>
     <string name="label_masbeha">المسبحة</string>
     <string name="label_quran">القرآن الكريم</string>
     <string name="label_tilawa">التلاوات</string>
@@ -37,6 +38,15 @@
     <string name="label_add_zekr">أضِف الذِكر الخاص بك</string>
     <string name="label_save">حفظ</string>
     <string name="label_cancel">الغاء</string>
+    <string name="prayer_time_notification_come">حان الآن موعد آذان %s</string>
+    <string name="athan">آذان</string>
+    <string name="fajr">الفجر</string>
+    <string name="sunrise">الشروق</string>
+    <string name="dhuhr">الظهر</string>
+    <string name="asr">العصر</string>
+    <string name="maghrib">المغرب</string>
+    <string name="isha">العشاء</string>
+
 
 
 </resources>

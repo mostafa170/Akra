@@ -3,6 +3,8 @@ package com.kamel.akra.data.utils
 import android.Manifest
 
 const val DEFAULT_LANGUAGE = "en"
+const val ARABIC = "ar"
+
 
 const val UN_AUTH: String = "UnauthenticatedFailure"
 const val ACCEPT_ORDER_FAIL: String = "AcceptOrderFailure"
@@ -50,5 +52,29 @@ const val ACTION_PAUSE = "com.valdioveliu.valdio.audioplayer.ACTION_PAUSE"
 const val ACTION_PREVIOUS = "com.valdioveliu.valdio.audioplayer.ACTION_PREVIOUS"
 const val ACTION_NEXT = "com.valdioveliu.valdio.audioplayer.ACTION_NEXT"
 const val ACTION_STOP = "com.valdioveliu.valdio.audioplayer.ACTION_STOP"
+
+
+const val PRAYER_ID = "prayer_id_key"
+const val PRAYER_NOTIFICATION_CHANNEL_ID = "prayers_notifications_id"
+const val NOTIFICATION = "notification_key"
+const val NOTIFICATION_ID_KEY = "notification_id"
+const val PRAYER_NOTIFICATION_CHANNEL_NAME = "Prayers Notifications"
+
+
+const val PRAYER_NOTIFICATION_ID = 75
+const val PRAYER_NOTIFICATION_REQUEST_CODE = 21
+
+// Prayer times names
+const val  FAJR = "الفجر"
+const val SUNRISE = "الشروق"
+const val DHUHR = "الظهر"
+const val ASR = "العصر"
+const val MAGHRIB = "المغرب"
+const val ISHA = "العشاء"
+
+
+
+
+
 
 
