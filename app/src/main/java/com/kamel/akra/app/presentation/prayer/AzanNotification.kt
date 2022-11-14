@@ -15,6 +15,7 @@ import androidx.core.app.NotificationCompat
 import com.kamel.akra.R
 import com.kamel.akra.data.utils.*
 
+
 object AzanNotification {
 
     private fun createAzanNotificationsChannel(context: Context) {
@@ -33,7 +34,7 @@ object AzanNotification {
                 .build()
             notificationChannel.setSound(
                 Uri.parse(
-                    ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName
+                    ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/raw/azan.mp3"
                 ), audioAttributes
             )
 
@@ -60,9 +61,10 @@ object AzanNotification {
                 .setAutoCancel(true)
                 .setSound(
                     Uri.parse(
-                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName
+                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/raw/azan.mp3"
                         )
                     )
+
 
         val prayerAlarmNotification = notificationBuilder.build()
 
