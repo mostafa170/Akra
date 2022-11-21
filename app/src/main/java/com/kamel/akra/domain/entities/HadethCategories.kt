@@ -10,3 +10,11 @@ data class Hadeth(
     val id : Int,
     val content: String,
 )
+
+data class HadethListById(
+    val hadethList:List<Hadeth> ,
+    val lastPage: Int,
+    val currentPage: Int
+)
+
+

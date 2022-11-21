@@ -46,7 +46,7 @@
     <string name="asr">العصر</string>
     <string name="maghrib">المغرب</string>
     <string name="isha">العشاء</string>
-
+    <string name="label_hadeth_count">%s حديث</string>
 
 
 </resources>

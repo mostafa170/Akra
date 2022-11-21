@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.kamel.akra.R
@@ -35,6 +36,7 @@ class PrayerBroadcastReceiver : BroadcastReceiver() {
             handler.postDelayed({
                 var prayerObserver: Observer<Prayer>? = null
                 prayerObserver = Observer { upcomingPrayer ->
+                    Log.e("TAG", "onReceive: $upcomingPrayer" )
                     if (upcomingPrayer != null && upcomingPrayer.id != prayerId) AzanNotification.scheduleNotification(
                         context,
                         AzanNotificationData(
@@ -50,6 +52,7 @@ class PrayerBroadcastReceiver : BroadcastReceiver() {
                     prayerObserver?.let { obs -> nextUpcomingPrayerLiveData.removeObserver(obs) }
                 }
                 nextUpcomingPrayerLiveData.observeForever(prayerObserver)
+                Log.e("TAG", "nextUpcomingPrayerLiveData: ${nextUpcomingPrayerLiveData.value}" )
             }, 3000)
 
         }

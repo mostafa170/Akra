@@ -1,6 +1,7 @@
 package com.kamel.akra.data.network
 
 import com.kamel.akra.data.models.HadethResponse
+import com.kamel.akra.data.models.HadethResponseItem
 import com.kamel.akra.data.models.RadioChannelResponse
 import com.kamel.akra.data.models.PrayersSuccessModel
 import kotlinx.coroutines.Deferred
@@ -36,7 +37,7 @@ interface APICalls {
     fun downloadMonthPrayersAsync(@QueryMap queries: Map<String, String>): Deferred<PrayersSuccessModel>
 
     @GET("categories/list/?language=ar")
-    fun downloadHadethsCategoriesAsync(): Deferred<HadethResponse>
+    fun downloadHadethsCategoriesAsync(): Deferred<List<HadethResponseItem>>
 
     @GET("categories/list/?language=ar")
     fun downloadHadethsListByIdAsync(@Query("category_id") category_id: Int): Deferred<HadethResponse>

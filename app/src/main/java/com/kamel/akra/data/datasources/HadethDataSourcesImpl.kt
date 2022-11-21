@@ -15,7 +15,7 @@ class HadethDataSourcesImpl @Inject constructor(private val dispatcher: Coroutin
         withContext(dispatcher) {
             try {
                 val response = NetworkHadeth.apiCalls.downloadHadethsCategoriesAsync().await()
-                          return@withContext Either.Right(response.hadethResponse.toEntity())
+                          return@withContext Either.Right(response.toEntity())
 
             } catch (e: Exception) {
                 return@withContext Either.Left(SomethingWentWrongFailure(e.message ?: "Something went wrong!"))

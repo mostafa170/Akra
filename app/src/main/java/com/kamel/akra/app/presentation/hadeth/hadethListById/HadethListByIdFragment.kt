@@ -1,8 +1,7 @@
-package com.kamel.akra.app.presentation.hadeth
+package com.kamel.akra.app.presentation.hadeth.hadethListById
 
 import android.content.ContextWrapper
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,16 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.kamel.akra.R
-import com.kamel.akra.app.presentation.home.HomeViewModel
+import com.kamel.akra.app.presentation.hadeth.HadethViewModel
 import com.kamel.akra.app.presentation.main.MainActivityEventsListener
 import com.kamel.akra.databinding.FragmentHadethBinding
-import com.kamel.akra.databinding.FragmentHomeBinding
+import com.kamel.akra.databinding.FragmentHadethListByIdBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class HadethFragment : Fragment() {
-
+class HadethListByIdFragment : Fragment() {
     private val viewModel: HadethViewModel by viewModels()
 
     private val mainActivityEventsListener: MainActivityEventsListener by lazy {
@@ -34,12 +31,10 @@ class HadethFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val binding = FragmentHadethBinding.inflate(inflater)
+        val binding = FragmentHadethListByIdBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.executePendingBindings()
-
-        viewModel.getHadethCategoriesApi()
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){
@@ -60,16 +55,6 @@ class HadethFragment : Fragment() {
                 mainActivityEventsListener.showLoading()
             else
                 mainActivityEventsListener.hideLoading()
-        }
-
-        val onItemClickListener = OnHadethCategoriesClickListener{
-            if (it !=null){
-                Log.e("TAG", "onItemClickListener: $it" )
-            }
-        }
-
-        binding.recyclerViewHadeth.apply {
-            adapter = HadethCatlogAdapter(onItemClickListener)
         }
 
         return binding.root

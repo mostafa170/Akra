@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kamel.akra.R
 import com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarAdapter
+import com.kamel.akra.app.presentation.hadeth.HadethCatlogAdapter
+import com.kamel.akra.domain.entities.HadethCategories
 import com.kamel.akra.domain.entities.Zekr
 
 @BindingAdapter("myImageResource")
@@ -32,6 +34,14 @@ fun loadImage(view: ImageView, url: String?) {
 fun bindAzkarItemsRecyclerView(recyclerView: RecyclerView, data: List<Zekr>?) {
     recyclerView.adapter?.let {
         val adapter = it as AzkarAdapter
+        adapter.submitList(data)
+    }
+}
+
+@BindingAdapter("hadethCategoriesItems")
+fun bindHadethCatlogListItemsRecyclerView(recyclerView: RecyclerView, data: List<HadethCategories>?) {
+    recyclerView.adapter?.let {
+        val adapter = it as HadethCatlogAdapter
         adapter.submitList(data)
     }
 }

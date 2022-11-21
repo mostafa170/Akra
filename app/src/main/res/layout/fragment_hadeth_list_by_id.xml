@@ -8,14 +8,13 @@
         <variable
             name="viewModel"
             type="com.kamel.akra.app.presentation.hadeth.HadethViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        tools:context=".app.presentation.hadeth.HadethFragment">
+        tools:context=".app.presentation.hadeth.hadethListById.HadethListByIdFragment">
 
         <ImageView
             android:id="@+id/image_view_back"
@@ -62,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view_back"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_hadeth_catlog" />
+            tools:listitem="@layout/item_hadeth_list_by_id" />
 
 
 

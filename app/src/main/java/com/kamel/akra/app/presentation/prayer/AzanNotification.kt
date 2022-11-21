@@ -34,7 +34,7 @@ object AzanNotification {
                 .build()
             notificationChannel.setSound(
                 Uri.parse(
-                    ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/raw/azan.mp3"
+                    ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/"+ R.raw.azan
                 ), audioAttributes
             )
 
@@ -61,7 +61,7 @@ object AzanNotification {
                 .setAutoCancel(true)
                 .setSound(
                     Uri.parse(
-                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/raw/azan.mp3"
+                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.packageName + "/"+ R.raw.azan
                         )
                     )
 
