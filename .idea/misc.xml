@@ -6,17 +6,30 @@
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/_custom_bg_curve.xml" value="0.1905" />
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/_custom_bg_curve_top.xml" value="0.1905" />
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/_splash_screen.xml" value="0.1905" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/drawable/ic_add_zekr.xml" value="0.1655" />
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/ic_error_icon.xml" value="0.1905" />
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/ic_no_image.xml" value="0.1905" />
         <entry key="..\:/workspace/Akra/app/src/main/res/drawable/ic_succes.xml" value="0.1905" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/drawable/ic_wake_up.xml" value="0.1185" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/_dialog_add_zekr.xml" value="0.2" />
         <entry key="..\:/workspace/Akra/app/src/main/res/layout/_dialog_error.xml" value="0.228125" />
         <entry key="..\:/workspace/Akra/app/src/main/res/layout/_dialog_loading.xml" value="0.2421875" />
         <entry key="..\:/workspace/Akra/app/src/main/res/layout/_dialog_success.xml" value="0.2421875" />
         <entry key="..\:/workspace/Akra/app/src/main/res/layout/activity_listan_elmoshaf.xml" value="0.128" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/azkar_item.xml" value="0.1" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_azkar.xml" value="0.2" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_azkar_category_list.xml" value="0.2" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_hadeth.xml" value="0.2421875" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_hadeth_list_by_id.xml" value="0.264" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_home.xml" value="0.16" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/fragment_my_azkar.xml" value="0.2" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/item_azkar.xml" value="0.2" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/item_hadeth_catlog.xml" value="0.1" />
+        <entry key="..\:/workspace/Akra/app/src/main/res/layout/item_hadeth_list_by_id.xml" value="0.24114583333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

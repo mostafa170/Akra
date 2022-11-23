@@ -47,6 +47,8 @@
     <string name="maghrib">المغرب</string>
     <string name="isha">العشاء</string>
     <string name="label_hadeth_count">%s حديث</string>
+    <string name="open_location_for_prayers">تأكد من تشغيل خدمة الموقع والانترنت لتتمكن من معرفة مواقيت الصلاة</string>
+
 
 
 </resources>

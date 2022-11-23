@@ -54,11 +54,11 @@ const val ACTION_NEXT = "com.valdioveliu.valdio.audioplayer.ACTION_NEXT"
 const val ACTION_STOP = "com.valdioveliu.valdio.audioplayer.ACTION_STOP"
 
 
-const val PRAYER_ID = "prayer_id_key"
+const val PRAYER_ID = "prayer_id_key_akra"
 const val PRAYER_NOTIFICATION_CHANNEL_ID = "prayers_notifications_id_akra"
 const val NOTIFICATION = "notification_key_akra"
 const val NOTIFICATION_ID_KEY = "notification_id_akra"
-const val PRAYER_NOTIFICATION_CHANNEL_NAME = "Prayers Notifications_akra"
+const val PRAYER_NOTIFICATION_CHANNEL_NAME = "Prayers Notifications akra"
 
 
 const val PRAYER_NOTIFICATION_ID = 75

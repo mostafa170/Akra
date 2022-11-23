@@ -27,8 +27,7 @@ class PrayerBroadcastReceiver : BroadcastReceiver() {
             if (notification != null)
                 notificationManager.notify(notificationId, notification)
 
-            val database = getDatabase(context)
-            val nextUpcomingPrayer:Prayer = database.prayersDao.getUpcomingPrayer()
+            val nextUpcomingPrayer:Prayer = getDatabase(context).prayersDao.getUpcomingPrayer()
             val nextUpcomingPrayerLiveData = MutableLiveData<Prayer>()
             nextUpcomingPrayerLiveData.value = nextUpcomingPrayer
 
