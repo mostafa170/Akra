@@ -12,7 +12,7 @@ data class Hadeth(
 )
 
 data class HadethListById(
-    val hadethList:List<Hadeth> ,
+    val hadethList:List<HadethCategories> ,
     val lastPage: Int,
     val currentPage: Int
 )

@@ -1,9 +1,6 @@
 package com.kamel.akra.data.network
 
-import com.kamel.akra.data.models.HadethResponse
-import com.kamel.akra.data.models.HadethResponseItem
-import com.kamel.akra.data.models.RadioChannelResponse
-import com.kamel.akra.data.models.PrayersSuccessModel
+import com.kamel.akra.data.models.*
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
@@ -39,8 +36,8 @@ interface APICalls {
     @GET("categories/list/?language=ar")
     fun downloadHadethsCategoriesAsync(): Deferred<List<HadethResponseItem>>
 
-    @GET("categories/list/?language=ar")
-    fun downloadHadethsListByIdAsync(@Query("category_id") category_id: Int): Deferred<HadethResponse>
+    @GET("hadeeths/list/?language=ar")
+    fun downloadHadethsListByIdAsync(@Query("category_id") category_id: Int,@Query("page") page: Int): Deferred<HadethListByIdResponse>
 
 
 }

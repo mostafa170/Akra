@@ -1,6 +1,8 @@
 package com.kamel.akra.data.models
 
 import com.google.gson.annotations.SerializedName
+import com.kamel.akra.domain.entities.HadethCategories
+import com.kamel.akra.domain.entities.HadethListById
 
 data class HadethListByIdResponse(
 
@@ -37,3 +39,19 @@ data class HadethListByIdItem(
 	@field:SerializedName("title")
 	val title: String
 )
+
+fun List<HadethListByIdItem>.toHadethEntity() = map {
+	HadethCategories(
+		it.id.toInt(),
+		it.title,
+		0
+	)
+}
+
+fun HadethListByIdResponse.toHadethListByIdEntity() =
+	HadethListById(
+		data.toHadethEntity(),
+		meta.lastPage,
+		meta.currentPage
+	)
+
