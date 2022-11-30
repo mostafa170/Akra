@@ -48,7 +48,9 @@
     <string name="isha">العشاء</string>
     <string name="label_hadeth_count">%s حديث</string>
     <string name="open_location_for_prayers">تأكد من تشغيل خدمة الموقع والانترنت لتتمكن من معرفة مواقيت الصلاة</string>
-
+    <string name="label_hadeth_details">تفاصيل الحديث</string>
+    <string name="label_hadeth_dsc">شرح الحديث</string>
+    <string name="label_hadeth_dsc_full">يُحَاسِبُ الله -تعالى- الْخَلَائِقَ يوم القيامة، ثُمَّ يَقْضِى بينهم بعدله، ويبدأ من المظالم بالْأَهم، وبما أَنَّ الدِّمَاء هي أَعْظم وأَهَمُّ ما يكون من المظَالمِ فِإِنَّهَا أَوْلُ مَا يُقْضَى بِهِ منها في ذلك اليومِ العظيمِ، وهذا فيما بين العباد في المظالم، أما أعمال العبد فأول ما .",ينظر فيه الصلاة</string>
 
 
 </resources>

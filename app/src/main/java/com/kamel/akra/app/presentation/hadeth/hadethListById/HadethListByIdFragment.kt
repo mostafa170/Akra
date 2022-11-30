@@ -2,6 +2,7 @@ package com.kamel.akra.app.presentation.hadeth.hadethListById
 
 import android.content.ContextWrapper
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +36,8 @@ class HadethListByIdFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.executePendingBindings()
+        val args = HadethListByIdFragmentArgs.fromBundle(requireArguments())
+        Log.e("TAG", "HadethListByIdFragment: ${args.hadethListById}" )
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){

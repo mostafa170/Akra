@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.kamel.akra.app.presentation.hadeth.HadethViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".app.presentation.hadeth.hadethDetails.HadethDetailsFragment">
+
+
+        <ImageView
+            android:id="@+id/image_view_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:onClick="@{() -> viewModel.onBackClicked()}"
+            android:src="@drawable/ic_back_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/img" />
+
+        <TextView
+            android:id="@+id/text_view_pageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@string/label_hadeth_details"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_20ssp"
+            style="@style/MyTextViewStyleRegular"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_back"
+            app:layout_constraintTop_toTopOf="@+id/image_view_back" />
+
+
+        <TextView
+            android:id="@+id/hadeth_text"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_back"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="أَوَّلُ مَا يُقْضَى بَيْنَ النَّاسِ يَوْمَ الْقِيَامَةِ فِي الدِّمَاءِ" />
+
+        <View
+            android:id="@+id/view_line1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:background="@color/color_B9B9B9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hadeth_text" />
+
+        <TextView
+            android:id="@+id/hadeth_text_full"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:textColor="@color/color_5A5A5A"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/view_line1"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text= ": عن عبد الله بن مَسعود -رضي الله عنه- قَالَ " />
+
+
+        <TextView
+            android:id="@+id/hadeth_text_attribution"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:textColor="@color/color_5A5A5A"
+            android:textSize="@dimen/_10ssp"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/hadeth_text_full"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text= "متفق عليه - و اللفظ لمسلم - صحيح" />
+
+        <TextView
+            android:id="@+id/hadeth_text_desc"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:textColor="@color/color_6992AC"
+            android:textSize="@dimen/_15ssp"
+            android:text="@string/label_hadeth_dsc"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/hadeth_text_attribution" />
+
+        <View
+            android:id="@+id/view_line2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:background="@color/color_B9B9B9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hadeth_text_desc" />
+
+        <TextView
+            android:id="@+id/hadeth_text_full_dsc"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:textColor="@color/color_5A5A5A"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_back"
+            app:layout_constraintTop_toBottomOf="@+id/view_line2"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text= "يُحَاسِبُ الله -تعالى- الْخَلَائِقَ يوم القيامة، ثُمَّ يَقْضِى بينهم بعدله، ويبدأ من المظالم بالْأَهم، وبما أَنَّ الدِّمَاء هي أَعْظم وأَهَمُّ ما يكون من المظَالمِ فِإِنَّهَا أَوْلُ مَا يُقْضَى بِهِ منها في ذلك اليومِ العظيمِ، وهذا فيما بين العباد في المظالم، أما أعمال العبد فأول ما" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -154,7 +154,28 @@
         android:name="com.kamel.akra.app.presentation.hadeth.HadethFragment"
         android:label="HadethFragment"
         tools:layout="@layout/fragment_hadeth" >
+
+        <action
+            android:id="@+id/action_to_hadethListByIdFragment"
+            app:destination="@id/hadethListByIdFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/hadethListByIdFragment"
+        android:name="com.kamel.akra.app.presentation.hadeth.hadethListById.HadethListByIdFragment"
+        android:label="HadethListByIdFragment"
+        tools:layout="@layout/fragment_hadeth_list_by_id" >
+
+        <argument
+            android:name="hadethListById"
+            app:argType="integer" />
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/tilawaFragment"
