@@ -17,4 +17,18 @@ data class HadethListById(
     val currentPage: Int
 )
 
+data class HadethDetails(
+    val id : Int,
+    val contentHadeeth: String,
+    val title: String,
+    val attributionGrade: String,
+    val explanation: String,
+    val wordsMeanings: List<WordsMeanings>
+)
+
+data class WordsMeanings(
+    val word: String,
+    val meaning: String,
+)
+
 

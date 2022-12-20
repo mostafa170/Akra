@@ -38,6 +38,7 @@ class HadethListByIdFragment : Fragment() {
         binding.executePendingBindings()
         val args = HadethListByIdFragmentArgs.fromBundle(requireArguments())
         Log.e("TAG", "HadethListByIdFragment: ${args.hadethListById}" )
+        viewModel.getHadethDetailsApi(args.hadethListById)
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){

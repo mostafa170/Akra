@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kamel.akra.domain.entities.HadethCategories
+import com.kamel.akra.domain.entities.HadethDetails
 import com.kamel.akra.domain.entities.HadethListById
 import com.kamel.akra.domain.usecases.hadeth.GetHadethCategoryUseCase
+import com.kamel.akra.domain.usecases.hadeth.GetHadethDetailsUseCase
 import com.kamel.akra.domain.usecases.hadeth.GetHadethListByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HadethViewModel  @Inject constructor(private val getHadethCategoryUseCase: GetHadethCategoryUseCase,
-private val getHadethListByIdUseCase: GetHadethListByIdUseCase): ViewModel(){
+private val getHadethListByIdUseCase: GetHadethListByIdUseCase,
+private val getHadethDetailsUseCase: GetHadethDetailsUseCase): ViewModel(){
 
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
@@ -50,6 +53,11 @@ private val getHadethListByIdUseCase: GetHadethListByIdUseCase): ViewModel(){
     val hadethListById: LiveData<HadethListById>
         get() = _hadethListById
 
+    private val _hadethDetails = MutableLiveData<HadethDetails>()
+    val hadethDetails: LiveData<HadethDetails>
+        get() = _hadethDetails
+
+
     fun getHadethCategoriesApi(){
         viewModelScope.launch {
             _loading.postValue(true)
@@ -69,6 +77,18 @@ private val getHadethListByIdUseCase: GetHadethListByIdUseCase): ViewModel(){
                 _error.postValue(it.toErrorString())
             },{
                 _hadethListById.postValue(it)
+            })
+            _loading.postValue(false)
+        }
+    }
+
+    fun getHadethDetailsApi(hadeth_id: Int){
+        viewModelScope.launch {
+            _loading.postValue(true)
+            getHadethDetailsUseCase.invoke(hadeth_id).fold({
+                _error.postValue(it.toErrorString())
+            },{
+                _hadethDetails.postValue(it)
             })
             _loading.postValue(false)
         }

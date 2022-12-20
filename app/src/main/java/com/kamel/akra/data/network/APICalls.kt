@@ -39,5 +39,8 @@ interface APICalls {
     @GET("hadeeths/list/?language=ar")
     fun downloadHadethsListByIdAsync(@Query("category_id") category_id: Int,@Query("page") page: Int): Deferred<HadethListByIdResponse>
 
+    @GET("hadeeths/one/?language=ar")
+    fun getHadethOneDetailsAsync(@Query("id") hadeth_id: Int): Deferred<HadethOneDetailsResponse>
+
 
 }
