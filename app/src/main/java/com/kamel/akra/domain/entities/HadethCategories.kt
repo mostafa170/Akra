@@ -6,11 +6,6 @@ data class HadethCategories(
     val count: Int
 )
 
-data class Hadeth(
-    val id : Int,
-    val content: String,
-)
-
 data class HadethListById(
     val hadethList:List<HadethCategories> ,
     val lastPage: Int,

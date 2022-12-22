@@ -6,12 +6,17 @@
     <data>
         <variable
             name="hadeth"
-            type="com.kamel.akra.domain.entities.Hadeth" />
+            type="com.kamel.akra.domain.entities.HadethCategories" />
+        <variable
+            name="onClickListener"
+            type="com.kamel.akra.app.presentation.hadeth.hadethListById.OnHadethListByIdClickListener" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> onClickListener.onClick(hadeth)}">
 
         <TextView
             android:id="@+id/hadeth_text"
@@ -21,7 +26,7 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="@{hadeth.content}"
+            android:text="@{hadeth.title}"
             android:textColor="@color/color_5A5A5A"
             android:textSize="@dimen/_16ssp"
             app:layout_constraintEnd_toStartOf="@+id/view_line2"

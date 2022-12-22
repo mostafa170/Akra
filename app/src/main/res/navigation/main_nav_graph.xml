@@ -170,11 +170,31 @@
         android:label="HadethListByIdFragment"
         tools:layout="@layout/fragment_hadeth_list_by_id" >
 
+        <action
+            android:id="@+id/action_to_hadethDetailsFragment"
+            app:destination="@id/hadethDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
         <argument
             android:name="hadethListById"
             app:argType="integer" />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/hadethDetailsFragment"
+        android:name="com.kamel.akra.app.presentation.hadeth.hadethDetails.HadethDetailsFragment"
+        android:label="HadethDetailsFragment"
+        tools:layout="@layout/fragment_hadeth_details" >
+        <argument
+            android:name="hadethDetailsId"
+            app:argType="integer" />
+
+    </fragment>
+
 
 
     <fragment

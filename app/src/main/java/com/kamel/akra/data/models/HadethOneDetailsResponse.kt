@@ -54,7 +54,7 @@ fun HadethOneDetailsResponse.toHadethDetailsEntity() =
 		id = id.toInt(),
 		contentHadeeth = hadeeth,
 		title = title,
-		attributionGrade = attribution + grade,
+		attributionGrade = "$attribution - $grade",
 		explanation = explanation,
 		wordsMeanings = wordsMeanings.toWordsMeaningsEntity()
 

@@ -3,22 +3,23 @@ package com.kamel.akra.app.presentation.hadeth.hadethListById
 import android.content.ContextWrapper
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.kamel.akra.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kamel.akra.app.presentation.hadeth.HadethViewModel
 import com.kamel.akra.app.presentation.main.MainActivityEventsListener
-import com.kamel.akra.databinding.FragmentHadethBinding
+import com.kamel.akra.app.utilsView.PaginationScrollListener
 import com.kamel.akra.databinding.FragmentHadethListByIdBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HadethListByIdFragment : Fragment() {
     private val viewModel: HadethViewModel by viewModels()
+    private lateinit var hadethListByIdAdapter : HadethListByIdAdapter
 
     private val mainActivityEventsListener: MainActivityEventsListener by lazy {
         requireNotNull(context) {
@@ -38,7 +39,7 @@ class HadethListByIdFragment : Fragment() {
         binding.executePendingBindings()
         val args = HadethListByIdFragmentArgs.fromBundle(requireArguments())
         Log.e("TAG", "HadethListByIdFragment: ${args.hadethListById}" )
-        viewModel.getHadethDetailsApi(args.hadethListById)
+        viewModel.getHadethListByIdApi(args.hadethListById)
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){
@@ -60,6 +61,39 @@ class HadethListByIdFragment : Fragment() {
             else
                 mainActivityEventsListener.hideLoading()
         }
+
+        val onItemClickListener = OnHadethListByIdClickListener{
+            if (it != null && this::hadethListByIdAdapter.isInitialized){
+                findNavController().navigate(HadethListByIdFragmentDirections.actionToHadethDetailsFragment(it.id))
+            }
+        }
+
+        hadethListByIdAdapter = HadethListByIdAdapter(onItemClickListener).also {
+            binding.recyclerViewHadeth.adapter = it
+        }
+        viewModel.hadethListById.observe(viewLifecycleOwner){
+            if (it !=null){
+                hadethListByIdAdapter.submitList(it)
+            }
+        }
+        binding.recyclerViewHadeth.addOnScrollListener(object : PaginationScrollListener(binding.recyclerViewHadeth.layoutManager as LinearLayoutManager){
+            override fun isLastPage(): Boolean {
+                return viewModel.isLastPage
+            }
+
+            override fun isLoading(): Boolean {
+                return viewModel.isLoading
+            }
+
+            override fun loadMoreItems() {
+                viewModel.currentPage += 1
+                viewModel.isLoading = true
+                if (!viewModel.isLastPage)
+                    viewModel.getHadethListByIdApi(args.hadethListById)
+                Log.e("TAG", "currentPage: ${viewModel.currentPage}" )
+            }
+
+        })
 
         return binding.root
     }

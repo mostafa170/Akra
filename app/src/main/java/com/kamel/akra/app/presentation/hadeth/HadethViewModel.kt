@@ -1,5 +1,6 @@
 package com.kamel.akra.app.presentation.hadeth
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,6 +24,12 @@ private val getHadethDetailsUseCase: GetHadethDetailsUseCase): ViewModel(){
 
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+
+    var currentPage = 1
+    var totalPages = 1
+    var isLastPage = false
+    var isLoading = false
+
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean>
@@ -49,8 +56,8 @@ private val getHadethDetailsUseCase: GetHadethDetailsUseCase): ViewModel(){
     val hadethCategories: LiveData<List<HadethCategories>>
         get() = _hadethCategories
 
-    private val _hadethListById = MutableLiveData<HadethListById>()
-    val hadethListById: LiveData<HadethListById>
+    private val _hadethListById = MutableLiveData<List<HadethCategories>>()
+    val hadethListById: LiveData<List<HadethCategories>>
         get() = _hadethListById
 
     private val _hadethDetails = MutableLiveData<HadethDetails>()
@@ -70,13 +77,19 @@ private val getHadethDetailsUseCase: GetHadethDetailsUseCase): ViewModel(){
         }
     }
 
-    fun getHadethListByIdApi(category_id: Int,page: Int){
+    fun getHadethListByIdApi(category_id: Int){
         viewModelScope.launch {
             _loading.postValue(true)
-            getHadethListByIdUseCase.invoke(category_id, page).fold({
+            getHadethListByIdUseCase.invoke(category_id, currentPage).fold({
                 _error.postValue(it.toErrorString())
             },{
-                _hadethListById.postValue(it)
+                _hadethListById.postValue(((_hadethListById.value ?: emptyList()) union it.hadethList).toList())
+                totalPages = it.lastPage
+                isLoading = false
+                if (currentPage ==it.lastPage)
+                    isLastPage = true
+
+                Log.e("TAG", "hadethListById: ${it.currentPage} ${it.lastPage}" )
             })
             _loading.postValue(false)
         }
@@ -92,5 +105,10 @@ private val getHadethDetailsUseCase: GetHadethDetailsUseCase): ViewModel(){
             })
             _loading.postValue(false)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }
