@@ -1,10 +1,13 @@
 package com.kamel.akra.domain.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+@Parcelize
 data class HadethCategories(
     val id : Int,
     val title: String,
     val count: Int
-)
+) : Parcelable
 
 data class HadethListById(
     val hadethList:List<HadethCategories> ,

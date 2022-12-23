@@ -179,8 +179,8 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
 
         <argument
-            android:name="hadethListById"
-            app:argType="integer" />
+            android:name="hadethCategories"
+            app:argType="com.kamel.akra.domain.entities.HadethCategories" />
 
     </fragment>
 

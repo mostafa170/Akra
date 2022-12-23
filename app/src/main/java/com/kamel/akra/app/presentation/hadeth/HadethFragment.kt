@@ -65,7 +65,7 @@ class HadethFragment : Fragment() {
         val onItemClickListener = OnHadethCategoriesClickListener{
             if (it !=null){
                 Log.e("TAG", "onItemClickListener: $it" )
-                findNavController().navigate(HadethFragmentDirections.actionToHadethListByIdFragment(it.id))
+                findNavController().navigate(HadethFragmentDirections.actionToHadethListByIdFragment(it))
             }
         }
 

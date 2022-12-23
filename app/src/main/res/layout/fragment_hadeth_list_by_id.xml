@@ -8,6 +8,10 @@
         <variable
             name="viewModel"
             type="com.kamel.akra.app.presentation.hadeth.HadethViewModel" />
+        <variable
+            name="pageName"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,10 +38,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:text="@string/label_hades"
+            android:text="@{pageName}"
             android:textColor="@color/color_6992AC"
             android:textSize="@dimen/_20ssp"
             style="@style/MyTextViewStyleRegular"
+            tools:text="@string/label_hades"
             app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
             app:layout_constraintEnd_toStartOf="@+id/image_view_back"
             app:layout_constraintTop_toTopOf="@+id/image_view_back" />

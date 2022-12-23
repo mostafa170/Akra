@@ -38,8 +38,9 @@ class HadethListByIdFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
         val args = HadethListByIdFragmentArgs.fromBundle(requireArguments())
-        Log.e("TAG", "HadethListByIdFragment: ${args.hadethListById}" )
-        viewModel.getHadethListByIdApi(args.hadethListById)
+        binding.pageName = args.hadethCategories.title
+        Log.e("TAG", "HadethListByIdFragment: ${args.hadethCategories.id}" )
+        viewModel.getHadethListByIdApi(args.hadethCategories.id)
 
         viewModel.back.observe(viewLifecycleOwner){
             if (it !=null && it){
@@ -89,7 +90,7 @@ class HadethListByIdFragment : Fragment() {
                 viewModel.currentPage += 1
                 viewModel.isLoading = true
                 if (!viewModel.isLastPage)
-                    viewModel.getHadethListByIdApi(args.hadethListById)
+                    viewModel.getHadethListByIdApi(args.hadethCategories.id)
                 Log.e("TAG", "currentPage: ${viewModel.currentPage}" )
             }
 
