@@ -12,6 +12,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_next_prayer">يُرفع %s في تمام الساعة</string>
     <string name="label_next_prayer_reminder">%s مُتبقية حسب توقيت موقعك الحالي</string>
+    <string name="label_next_prayer_reminder_page"> يحين موعد الصلاه في %s</string>
+    <string name="label_next_prayer_page">متبقى على %s</string>
+
     <string name="label_masbeha">المسبحة</string>
     <string name="label_quran">القرآن الكريم</string>
     <string name="label_tilawa">التلاوات</string>

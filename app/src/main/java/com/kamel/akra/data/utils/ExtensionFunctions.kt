@@ -49,16 +49,16 @@ fun Int.toPrayerIdName(): String =
         else -> this.toString()
     }
 
-//fun Int.toPrayerImage(): Int =
-//    when(this % 6){
-//        0 -> R.drawable.ic_asha
-//        1 -> R.drawable.ic_fagr
-//        2 -> R.drawable.ic_sunrise
-//        3 -> R.drawable.ic_dohr
-//        4 -> R.drawable.ic_asr
-//        5 -> R.drawable.ic_magreb
-//        else -> R.drawable.ic_asr
-//    }
+fun Int.toPrayerImage(): Int =
+    when(this % 6){
+        0 -> R.drawable.ic_isha_prayer
+        1 -> R.drawable.ic_fajr_prayer
+        2 -> R.drawable.ic_duha_prayer
+        3 -> R.drawable.ic_duhr_prayer
+        4 -> R.drawable.ic_asr_prayer
+        5 -> R.drawable.ic_maghreb_prayer
+        else -> R.drawable.ic_asr_prayer
+    }
 
 fun Long.toPrayerTime(): String = MyDate.convertDateToDateString(Date(this), "hh:mm aaa", Locale(
      ARABIC

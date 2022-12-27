@@ -8,7 +8,9 @@ import com.bumptech.glide.Glide
 import com.kamel.akra.R
 import com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarAdapter
 import com.kamel.akra.app.presentation.hadeth.HadethCatlogAdapter
+import com.kamel.akra.app.presentation.prayer.PrayersListAdapter
 import com.kamel.akra.domain.entities.HadethCategories
+import com.kamel.akra.domain.entities.Prayer
 import com.kamel.akra.domain.entities.Zekr
 
 @BindingAdapter("myImageResource")
@@ -44,6 +46,12 @@ fun bindHadethCatlogListItemsRecyclerView(recyclerView: RecyclerView, data: List
         val adapter = it as HadethCatlogAdapter
         adapter.submitList(data)
     }
+}
+
+@BindingAdapter("dayPrayers")
+fun bindPrayersRecyclerView(recyclerView: RecyclerView, data: List<Prayer>?) {
+    val adapter = recyclerView.adapter as PrayersListAdapter
+    adapter.submitList(data)
 }
 
 

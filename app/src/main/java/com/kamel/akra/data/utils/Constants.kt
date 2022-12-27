@@ -66,7 +66,7 @@ const val PRAYER_NOTIFICATION_REQUEST_CODE = 21
 
 // Prayer times names
 const val  FAJR = "الفجر"
-const val SUNRISE = "الشروق"
+const val SUNRISE = "الضحي"
 const val DHUHR = "الظهر"
 const val ASR = "العصر"
 const val MAGHRIB = "المغرب"

@@ -10,6 +10,7 @@ import javax.inject.Inject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.kamel.akra.app.utilsView.MyDate
+import com.kamel.akra.app.utilsView.MyDateJava
 import com.kamel.akra.data.utils.toHijriMonthName
 import com.kamel.akra.data.utils.toPrayerName
 import com.kamel.akra.data.utils.toPrayerTime
@@ -33,11 +34,6 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private lateinit var timer: CountDownTimer
-
-    val _upcomingPrayer = MutableLiveData<Prayer>()
-    val upcomingPrayer: LiveData<Prayer>
-        get() = _upcomingPrayer
 
     private val _back = MutableLiveData<Boolean>()
     val back: LiveData<Boolean>
@@ -60,13 +56,12 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
         _error.value = null
     }
 
-    private val _hijriAdjustmentClicked = MutableLiveData<Boolean>()
-    val hijriAdjustmentClicked: LiveData<Boolean>
-        get() = _hijriAdjustmentClicked
+    private lateinit var timer: CountDownTimer
 
-    private val _closeHijriAdjustmentDialog = MutableLiveData<Boolean>()
-    val closeHijriAdjustmentDialog: LiveData<Boolean>
-        get() = _closeHijriAdjustmentDialog
+    val _upcomingPrayer = MutableLiveData<Prayer>()
+    val upcomingPrayer: LiveData<Prayer>
+        get() = _upcomingPrayer
+
 
     private val _shouldGetNextUpcomingPrayer = MutableLiveData<Boolean>()
     val shouldGetNextUpcomingPrayer: LiveData<Boolean>
@@ -96,40 +91,13 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
     val dayHijriDate: LiveData<String>
         get() = _dayHijriDate
 
-    private val _showDatePickerDialog = MutableLiveData<Boolean>()
-    val showDatePickerDialog: LiveData<Boolean>
-        get() = _showDatePickerDialog
-    fun onOpenDatePickerClicked() {
-        _showDatePickerDialog.value = true
-    }
-    fun onDatePickerShown(){
-        _showDatePickerDialog.value = false
-    }
-
     private val calendar = Calendar.getInstance()
-    private var currentDayNumber: Int = calendar.get(Calendar.DAY_OF_MONTH)
-    private var maxDayNumber: Int = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
     private val _dayOfMonthNumber = MutableLiveData<Int>()
     val dayOfMonthNumber: LiveData<Int>
         get() = _dayOfMonthNumber
 
-
     init {
         _dayOfMonthNumber.value = calendar.get(Calendar.DAY_OF_MONTH)
-    }
-
-    fun onHijriAdjustmentClicked(){
-        _hijriAdjustmentClicked.value = true
-    }
-    fun onHijriAdjustmentClickedDone() {
-        _hijriAdjustmentClicked.value = false
-    }
-
-    fun onCloseHijriAdjustmentClicked(){
-        _closeHijriAdjustmentDialog.value = true
-    }
-    fun onCloseHijriAdjustmentClickedDone(){
-        _closeHijriAdjustmentDialog.value = false
     }
 
     fun downloadPrayers(location: Location, adjustment : Int){
@@ -156,38 +124,22 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
             getDayPrayersUseCase.invoke(dayNumber).fold({
                     _error.value = it.toErrorString()
             },{
-                _dayPrayers.value = it
+                if(it.isNotEmpty()) {
+                    _dayPrayers.value = it
+                    _dayDate.value = MyDate.convertDateToDateString(
+                        Date(it[0].dateTime),
+                        "yyyy MMMM dd",
+                        Locale.getDefault()
+                    )
+                    _dayHijriDate.value = it[0].dateHijri.replaceRange(
+                        2, 6, it[0].dateHijri.split("-")[1].toHijriMonthName(
+                            "ar"
+                        )
+                    )
+                }
+                geNextUpcomingPrayerLocal()
             })
-        }
-    }
-
-    fun onGetNextDayPrayersClicked(){
-        if(currentDayNumber < maxDayNumber){
-            currentDayNumber += 1
-            _dayOfMonthNumber.value = currentDayNumber
-        }
-    }
-    fun onGetPreviousPrayersDayClicked(){
-        if(currentDayNumber > 1){
-            currentDayNumber -= 1
-            _dayOfMonthNumber.value = currentDayNumber
-        }
-    }
-
-    fun setDayPrayers(prayers: List<Prayer>){
-        if(prayers.isNotEmpty()) {
-            _dayPrayers.value = prayers
-            _dayDate.value = MyDate.convertDateToDateString(
-                Date(prayers[0].dateTime),
-                "dd MMMM yyyy",
-                Locale.getDefault()
-            )
-
-            _dayHijriDate.value = prayers[0].dateHijri.replaceRange(
-                2, 6, prayers[0].dateHijri.split("-")[1].toHijriMonthName(
-                    "ar"
-                )
-            )
+            _loading.value = false
         }
     }
 
@@ -196,9 +148,7 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
         val timeRemaining = prayer.dateTime - System.currentTimeMillis()
         timer = object: CountDownTimer(timeRemaining, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                _upcomingPrayerTimerText.value = MyDate.millisecondsToCountDownString(
-                    millisUntilFinished
-                )
+                _upcomingPrayerTimerText.value = MyDateJava.millisecondsToCountDownString(millisUntilFinished)
             }
             override fun onFinish() {
                 _shouldGetNextUpcomingPrayer.value = true
@@ -207,6 +157,7 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
         }
         timer.start()
         _upcomingPrayerName.value = prayer.id.toPrayerName(resources)
+        Log.e("TAG", "setUpUpcomingPrayer: ${_upcomingPrayerTimerText.value}" )
     }
 
 
@@ -214,18 +165,13 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
         _shouldGetNextUpcomingPrayer.value = false
     }
 
-    fun setDayOfMonthNumber(dayOfMonth: Int) {
-        currentDayNumber = dayOfMonth
-        _dayOfMonthNumber.value = dayOfMonth
-    }
-
-    fun geNextUpcomingPrayer(){
+    fun geNextUpcomingPrayerLocal(){
         viewModelScope.launch {
             getUpcomingPrayerUseCase.invoke().fold(
                 {
-                _error.value = it.toErrorString()
-            },{
-                _upcomingPrayer.value = it
+                    _error.value = it.toErrorString()
+                },{
+                    _upcomingPrayer.value = it
                 })
         }
     }
@@ -234,6 +180,4 @@ private val getDayPrayersUseCase: GetDayPrayersUseCase): ViewModel(){
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
 }

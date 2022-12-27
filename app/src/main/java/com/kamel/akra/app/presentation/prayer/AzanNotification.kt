@@ -1,5 +1,6 @@
 package com.kamel.akra.app.presentation.prayer
 
+import android.annotation.SuppressLint
 import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -42,6 +43,7 @@ object AzanNotification {
         }
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     fun scheduleNotification(context: Context, azanNotificationData: AzanNotificationData) {
         Log.i("TAG", "scheduleNotification: $azanNotificationData")
         createAzanNotificationsChannel(context)
@@ -73,7 +75,11 @@ object AzanNotification {
         notificationIntent.putExtra(NOTIFICATION, prayerAlarmNotification)
         notificationIntent.putExtra(PRAYER_ID, azanNotificationData.prayerId)
 
-        val pendingIntent = PendingIntent.getBroadcast(context, PRAYER_NOTIFICATION_REQUEST_CODE, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(context, PRAYER_NOTIFICATION_REQUEST_CODE, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getBroadcast(context, PRAYER_NOTIFICATION_REQUEST_CODE, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
 
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)

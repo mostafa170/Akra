@@ -79,6 +79,8 @@
             android:layout_marginTop="@dimen/_40sdp"
             android:textSize="@dimen/_15ssp"
             android:gravity="center"
+            tools:visibility="gone"
+
             android:visibility="@{viewModel.upcomingPrayer == null ? View.VISIBLE : View.GONE}"
             android:text="@string/open_location_for_prayers"
             app:layout_constraintEnd_toEndOf="parent"

@@ -2,8 +2,8 @@ package com.kamel.akra.app.presentation.prayer
 
 import android.content.ContextWrapper
 import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +14,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.kamel.akra.R
 import com.kamel.akra.app.presentation.main.MainActivityEventsListener
-import com.kamel.akra.app.utilsView.MyDialog
 import com.kamel.akra.data.utils.*
 import com.kamel.akra.databinding.FragmentPrayersBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,24 +38,14 @@ class PrayersFragment : Fragment() {
         LocationServices.getFusedLocationProviderClient(activity)
     }
 
-    private val myDialog: MyDialog by lazy {
-        val activity = requireNotNull(this.activity) {
-            "Can't create without activity"
-        }
-        MyDialog(activity)
-    }
-
-    private var currentLocation: Location? = null
     private lateinit var locationManager: MyLocationManager
     private val locationCallback: LocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            if(locationResult != null) {
-                currentLocation = locationResult.locations.first { it != null }
-                if (currentLocation != null)
-                    locationManager.stopLocationUpdates()
-                // TODO can't get location
+            val currentLocation = locationResult.locations.first { it != null }
+            if (currentLocation != null) {
+                viewModel.downloadPrayers(currentLocation,0)
+                locationManager.stopLocationUpdates()
             }
-            // TODO can't get location
         }
     }
 
@@ -98,7 +86,40 @@ class PrayersFragment : Fragment() {
                 mainActivityEventsListener.hideLoading()
         }
 
+        viewModel.shouldGetNextUpcomingPrayer.observe(viewLifecycleOwner) {
+            if (it != null && it) {
+                viewModel.upcomingPrayer.observe(viewLifecycleOwner) { prayer ->
+                    viewModel.setUpUpcomingPrayer(prayer)
+                }
+                viewModel.loadedNextUpcomingPrayer()
+            }
+        }
+        viewModel.upcomingPrayer.observe(viewLifecycleOwner) {
+            if (it != null) {
+                viewModel.setUpUpcomingPrayer(it)
+            } else {
+                // TODO last prayer of last day
+                // TODO database is empty
+            }
+        }
 
+        viewModel.dayOfMonthNumber.observe(viewLifecycleOwner) { dayNumber ->
+            if (dayNumber != null) {
+                Log.e("TAG", "onCreateView: $dayNumber" )
+                viewModel.getDayPrayers(if(dayNumber < 10) "0$dayNumber".toInt() else "$dayNumber".toInt())
+            }
+        }
+
+        val adapterPrayersList = PrayersListAdapter(resources)
+        binding.recyclerViewPrayers.apply {
+            adapter = adapterPrayersList
+        }
+
+        viewModel.dayPrayers.observe(viewLifecycleOwner){
+            if (!it.isNullOrEmpty()){
+                adapterPrayersList.submitList(it)
+            }
+        }
 
         return binding.root
     }
@@ -108,6 +129,4 @@ class PrayersFragment : Fragment() {
             grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
             locationManager.startLocationUpdates()
     }
-
-
 }

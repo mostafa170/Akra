@@ -43,14 +43,12 @@ class HomeFragment : Fragment() {
     private lateinit var locationManager: MyLocationManager
     private val locationCallback: LocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            if (locationResult != null) {
-                val currentLocation = locationResult.locations.first { it != null }
-                if (currentLocation != null) {
-                    viewModel.downloadPrayers(currentLocation,0)
-                    locationManager.stopLocationUpdates()
-                }
-                // TODO can't get location
+            val currentLocation = locationResult.locations.first { it != null }
+            if (currentLocation != null) {
+                viewModel.downloadPrayers(currentLocation,0)
+                locationManager.stopLocationUpdates()
             }
+            // TODO can't get location
             // TODO can't get location
         }
     }

@@ -1,6 +1,5 @@
 package com.kamel.akra.data.utils
 
-import com.google.firebase.installations.FirebaseInstallations
 import com.google.firebase.messaging.FirebaseMessaging
 
 
@@ -19,6 +18,18 @@ object SharedPreferencesData {
 
     fun setAuthToken(value: String) = SharedPreferencesUtils.saveString("_auth_token", value)
     fun getAuthToken() = SharedPreferencesUtils.getString("_auth_token", null)
+
+    fun isNotifyPrayer(prayerName: String): Boolean {
+        return if (prayerName == SUNRISE) false else SharedPreferencesUtils.getBoolean(
+            prayerName,
+            true
+        )
+    }
+
+    fun setNotifyPrayer(prayerName: String, value: Boolean) {
+        SharedPreferencesUtils.saveBoolean(prayerName, value)
+    }
+
 
     fun logout(){
         FirebaseMessaging.getInstance().deleteToken()
