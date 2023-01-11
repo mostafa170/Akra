@@ -10,83 +10,88 @@
             type="com.kamel.akra.app.presentation.qibla.QiblaViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
-        tools:context=".app.presentation.qibla.QiblaFragment">
-
-        <ImageView
-            android:id="@+id/image_view_back"
-            android:layout_width="wrap_content"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:onClick="@{() -> viewModel.onBackClicked()}"
-            android:src="@drawable/ic_back_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/img" />
+            android:background="@drawable/background"
+            tools:context=".app.presentation.qibla.QiblaFragment">
 
-        <TextView
-            android:id="@+id/text_view_pageName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="@string/label_qibla"
-            android:textColor="@color/color_6992AC"
-            android:textSize="@dimen/_20ssp"
-            style="@style/MyTextViewStyleRegular"
-            app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
-            app:layout_constraintEnd_toStartOf="@+id/image_view_back"
-            app:layout_constraintTop_toTopOf="@+id/image_view_back" />
+            <ImageView
+                android:id="@+id/image_view_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:onClick="@{() -> viewModel.onBackClicked()}"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/img" />
 
-        <ImageView
-            android:id="@+id/imageView_qiblaBackground"
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="@dimen/_250sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:src="@drawable/ic_quibla_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_back"
-            android:contentDescription="@string/img" />
+            <TextView
+                android:id="@+id/text_view_pageName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/label_qibla"
+                android:textColor="@color/color_6992AC"
+                android:textSize="@dimen/_20ssp"
+                style="@style/MyTextViewStyleRegular"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
+                app:layout_constraintEnd_toStartOf="@+id/image_view_back"
+                app:layout_constraintTop_toTopOf="@+id/image_view_back" />
 
-        <ImageView
-            android:id="@+id/imageView_qiblaArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:paddingBottom="@dimen/_80sdp"
-            android:visibility="@{viewModel.currentQiblaDirection > 0 ? View.VISIBLE : View.GONE}"
-            android:src="@drawable/kaaba_arrow"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView_qiblaBackground"
-            app:layout_constraintEnd_toEndOf="@+id/imageView_qiblaBackground"
-            app:layout_constraintStart_toStartOf="@+id/imageView_qiblaBackground"
-            app:layout_constraintTop_toTopOf="@+id/imageView_qiblaBackground"
-            android:contentDescription="@string/img" />
+            <ImageView
+                android:id="@+id/imageView_qiblaBackground"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_250sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:src="@drawable/ic_quibla_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_back"
+                android:contentDescription="@string/img" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:background="@drawable/_custom_bg_curve"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/_2sdp"
-            android:paddingBottom="@dimen/_2sdp"
-            android:text="@string/label_open_location_for_qibla"
-            android:textAlignment="center"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            style="@style/MyTextViewStyleRegular"
-            android:visibility="@{viewModel.currentQiblaDirection == 0 ? View.VISIBLE : View.GONE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_qiblaBackground" />
+            <ImageView
+                android:id="@+id/imageView_qiblaArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingBottom="@dimen/_80sdp"
+                android:visibility="@{viewModel.currentQiblaDirection > 0 ? View.VISIBLE : View.GONE}"
+                android:src="@drawable/kaaba_arrow"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_qiblaBackground"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_qiblaBackground"
+                app:layout_constraintStart_toStartOf="@+id/imageView_qiblaBackground"
+                app:layout_constraintTop_toTopOf="@+id/imageView_qiblaBackground"
+                android:contentDescription="@string/img" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:background="@drawable/_custom_bg_curve"
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="@string/label_open_location_for_qibla"
+                android:textAlignment="center"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                style="@style/MyTextViewStyleRegular"
+                android:visibility="@{viewModel.currentQiblaDirection == 0 ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_qiblaBackground" />
 
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

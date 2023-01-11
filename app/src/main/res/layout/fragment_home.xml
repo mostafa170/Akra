@@ -10,257 +10,263 @@
             type="com.kamel.akra.app.presentation.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
-        tools:context=".app.presentation.home.HomeFragment">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_layout_prayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:visibility="@{viewModel.upcomingPrayer != null ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:background="@drawable/background"
+            tools:context=".app.presentation.home.HomeFragment">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_layout_prayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:visibility="@{viewModel.upcomingPrayer != null ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/text_view_next_prayer"
+                    style="@style/MyTextViewStyleRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/label_next_prayer"
+                    android:textSize="@dimen/_16ssp"
+                    android:text="@{@string/label_next_prayer(viewModel.upcomingPrayerName)}"
+                    android:textColor="@color/color_707070"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_next_prayer_time"
+                    style="@style/MyTextViewStyleRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_6992AC"
+                    android:textSize="@dimen/_24ssp"
+                    android:text="@{viewModel.upcomingPrayerTime}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer"
+                    tools:text="‏06:55 م" />
+
+
+                <com.kamel.akra.app.utilsView.TextViewWithArabicDigits
+                    android:id="@+id/text_view_next_prayer_watch"
+                    style="@style/MyTextViewStyleRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_707070"
+                    android:textSize="@dimen/_12ssp"
+                    android:text="@{@string/label_next_prayer_reminder(viewModel.upcomingPrayerTimerText)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_time"
+                    tools:text="‏ 07:25:03 مُتبقية حسب توقيت موقعك الحالي" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/text_view_next_prayer"
+                android:id="@+id/text_view_next_prayer_un_valid"
                 style="@style/MyTextViewStyleRegular"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="@string/label_next_prayer"
-                android:textSize="@dimen/_16ssp"
-                android:text="@{@string/label_next_prayer(viewModel.upcomingPrayerName)}"
-                android:textColor="@color/color_707070"
+                android:textColor="@color/color_6992AC"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:textSize="@dimen/_15ssp"
+                android:gravity="center"
+                tools:visibility="gone"
+
+                android:visibility="@{viewModel.upcomingPrayer == null ? View.VISIBLE : View.GONE}"
+                android:text="@string/open_location_for_prayers"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+
             <TextView
-                android:id="@+id/text_view_next_prayer_time"
+                android:id="@+id/text_view_masbaha"
                 style="@style/MyTextViewStyleRegular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_6992AC"
-                android:textSize="@dimen/_24ssp"
-                android:text="@{viewModel.upcomingPrayerTime}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer"
-                tools:text="‏06:55 م" />
-
-
-            <com.kamel.akra.app.utilsView.TextViewWithArabicDigits
-                android:id="@+id/text_view_next_prayer_watch"
-                style="@style/MyTextViewStyleRegular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26sdp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:onClick="@{() -> viewModel.setGoToScreen(3)}"
+                android:text="@string/label_masbeha"
                 android:textColor="@color/color_707070"
-                android:textSize="@dimen/_12ssp"
-                android:text="@{@string/label_next_prayer_reminder(viewModel.upcomingPrayerTimerText)}"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_mesbaha"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
+
+            <View
+                android:id="@+id/view_line1"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_masbaha"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_qebla"
+                app:layout_constraintStart_toEndOf="@+id/text_view_masbaha"
+                app:layout_constraintTop_toTopOf="@+id/text_view_masbaha" />
+
+            <TextView
+                android:id="@+id/text_view_qebla"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26sdp"
+                android:text="@string/label_qibla"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:onClick="@{() -> viewModel.setGoToScreen(2)}"
+                app:drawableTopCompat="@drawable/ic_qibla"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_next_prayer_time"
-                tools:text="‏ 07:25:03 مُتبقية حسب توقيت موقعك الحالي" />
+                app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
+
+            <TextView
+                android:id="@+id/text_view_tilawa"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:onClick="@{() -> viewModel.setGoToScreen(1)}"
+                android:text="@string/label_tilawa"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_tilawa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
+
+            <View
+                android:id="@+id/view_line2"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_masbaha"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
+                app:layout_constraintStart_toEndOf="@+id/text_view_qebla"
+                app:layout_constraintTop_toTopOf="@+id/text_view_masbaha" />
+
+            <TextView
+                android:id="@+id/text_view_azkar"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setGoToScreen(6)}"
+                android:text="@string/label_azkar"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_azkar"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_masbaha"
+                app:layout_constraintStart_toStartOf="@+id/text_view_masbaha"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_masbaha" />
+
+            <View
+                android:id="@+id/view_line3"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_azkar"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_qebla"
+                app:layout_constraintStart_toEndOf="@+id/text_view_azkar"
+                app:layout_constraintTop_toTopOf="@+id/text_view_azkar" />
+
+            <TextView
+                android:id="@+id/text_view_quran"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_quran"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:onClick="@{() -> viewModel.setGoToScreen(5)}"
+                app:drawableTopCompat="@drawable/ic_quraan"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_qebla"
+                app:layout_constraintStart_toStartOf="@+id/text_view_qebla"
+                app:layout_constraintTop_toTopOf="@+id/text_view_azkar" />
+
+            <View
+                android:id="@+id/view_line4"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_quran"
+                app:layout_constraintEnd_toEndOf="@+id/view_line2"
+                app:layout_constraintStart_toStartOf="@+id/view_line2"
+                app:layout_constraintTop_toTopOf="@+id/text_view_quran" />
+
+            <TextView
+                android:id="@+id/text_view_radio"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="@string/label_radio"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.setGoToScreen(4)}"
+                app:drawableTopCompat="@drawable/ic_radio"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_tilawa"
+                app:layout_constraintStart_toStartOf="@+id/text_view_tilawa"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_masbaha" />
+
+
+            <TextView
+                android:id="@+id/text_view_prayer"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:gravity="center"
+                android:text="@string/label_prayer_time"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:onClick="@{() -> viewModel.setGoToScreen(8)}"
+                app:drawableTopCompat="@drawable/ic_times"
+                app:layout_constraintStart_toStartOf="@+id/text_view_azkar"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
+
+            <View
+                android:id="@+id/view_line5"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_prayer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_prayer" />
+
+
+            <TextView
+                android:id="@+id/text_view_hades"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:gravity="center"
+                android:text="@string/label_hades"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:onClick="@{() -> viewModel.setGoToScreen(7)}"
+                app:drawableTopCompat="@drawable/ic_hadees"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_radio"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/text_view_next_prayer_un_valid"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_6992AC"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:textSize="@dimen/_15ssp"
-            android:gravity="center"
-            tools:visibility="gone"
-
-            android:visibility="@{viewModel.upcomingPrayer == null ? View.VISIBLE : View.GONE}"
-            android:text="@string/open_location_for_prayers"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-
-        <TextView
-            android:id="@+id/text_view_masbaha"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:onClick="@{() -> viewModel.setGoToScreen(3)}"
-            android:text="@string/label_masbeha"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_mesbaha"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
-
-        <View
-            android:id="@+id/view_line1"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_masbaha"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_qebla"
-            app:layout_constraintStart_toEndOf="@+id/text_view_masbaha"
-            app:layout_constraintTop_toTopOf="@+id/text_view_masbaha" />
-
-        <TextView
-            android:id="@+id/text_view_qebla"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:text="@string/label_qibla"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(2)}"
-            app:drawableTopCompat="@drawable/ic_qibla"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
-
-        <TextView
-            android:id="@+id/text_view_tilawa"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_26sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:onClick="@{() -> viewModel.setGoToScreen(1)}"
-            android:text="@string/label_tilawa"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_tilawa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_prayer" />
-
-        <View
-            android:id="@+id/view_line2"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_masbaha"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
-            app:layout_constraintStart_toEndOf="@+id/text_view_qebla"
-            app:layout_constraintTop_toTopOf="@+id/text_view_masbaha" />
-
-        <TextView
-            android:id="@+id/text_view_azkar"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:gravity="center"
-            android:onClick="@{() -> viewModel.setGoToScreen(6)}"
-            android:text="@string/label_azkar"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_azkar"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_masbaha"
-            app:layout_constraintStart_toStartOf="@+id/text_view_masbaha"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_masbaha" />
-
-        <View
-            android:id="@+id/view_line3"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_azkar"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_qebla"
-            app:layout_constraintStart_toEndOf="@+id/text_view_azkar"
-            app:layout_constraintTop_toTopOf="@+id/text_view_azkar" />
-
-        <TextView
-            android:id="@+id/text_view_quran"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_quran"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(5)}"
-            app:drawableTopCompat="@drawable/ic_quraan"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_qebla"
-            app:layout_constraintStart_toStartOf="@+id/text_view_qebla"
-            app:layout_constraintTop_toTopOf="@+id/text_view_azkar" />
-
-        <View
-            android:id="@+id/view_line4"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_quran"
-            app:layout_constraintEnd_toEndOf="@+id/view_line2"
-            app:layout_constraintStart_toStartOf="@+id/view_line2"
-            app:layout_constraintTop_toTopOf="@+id/text_view_quran" />
-
-        <TextView
-            android:id="@+id/text_view_radio"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:text="@string/label_radio"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:gravity="center"
-            android:onClick="@{() -> viewModel.setGoToScreen(4)}"
-            app:drawableTopCompat="@drawable/ic_radio"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_tilawa"
-            app:layout_constraintStart_toStartOf="@+id/text_view_tilawa"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_masbaha" />
-
-
-        <TextView
-            android:id="@+id/text_view_prayer"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:gravity="center"
-            android:text="@string/label_prayer_time"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(8)}"
-            app:drawableTopCompat="@drawable/ic_times"
-            app:layout_constraintStart_toStartOf="@+id/text_view_azkar"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
-
-        <View
-            android:id="@+id/view_line5"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_prayer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_view_prayer" />
-
-
-        <TextView
-            android:id="@+id/text_view_hades"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:gravity="center"
-            android:text="@string/label_hades"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:onClick="@{() -> viewModel.setGoToScreen(7)}"
-            app:drawableTopCompat="@drawable/ic_hadees"
-            app:layout_constraintEnd_toEndOf="@+id/text_view_radio"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_azkar" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

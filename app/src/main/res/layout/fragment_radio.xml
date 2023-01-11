@@ -13,111 +13,118 @@
             type="Integer" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
-        tools:context=".app.presentation.radio.RadioFragment">
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/image_view_back"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:onClick="@{() -> viewModel.onBackClicked()}"
-            android:src="@drawable/ic_back_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/img" />
+            android:background="@drawable/background"
+            tools:context=".app.presentation.radio.RadioFragment">
 
-        <TextView
-            android:id="@+id/text_view_pageName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="@string/label_radio"
-            android:textColor="@color/color_6992AC"
-            android:textSize="@dimen/_20ssp"
-            style="@style/MyTextViewStyleRegular"
-            app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
-            app:layout_constraintEnd_toStartOf="@+id/image_view_back"
-            app:layout_constraintTop_toTopOf="@+id/image_view_back" />
+            <ImageView
+                android:id="@+id/image_view_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:onClick="@{() -> viewModel.onBackClicked()}"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/img" />
 
-
-        <ImageView
-            android:id="@+id/image_view_wave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_11sdp"
-            android:contentDescription="@string/img"
-            android:src="@drawable/ic_sound_wave"
-            android:scaleType="fitXY"
-            android:visibility="@{viewModel.play ? View.VISIBLE : View.INVISIBLE}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_back" />
+            <TextView
+                android:id="@+id/text_view_pageName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/label_radio"
+                android:textColor="@color/color_6992AC"
+                android:textSize="@dimen/_20ssp"
+                style="@style/MyTextViewStyleRegular"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
+                app:layout_constraintEnd_toStartOf="@+id/image_view_back"
+                app:layout_constraintTop_toTopOf="@+id/image_view_back" />
 
 
-        <TextView
-            android:id="@+id/text_view_name_channel"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_25sdp"
-            android:textColor="@color/color_6992AC"
-            android:textSize="@dimen/_16ssp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:text="@{viewModel.radioChannels.get(currentPosition).name}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_wave"
-            tools:text="إذاعة القرآن الكريم بصوت الشيخ احمد العجمي" />
+            <ImageView
+                android:id="@+id/image_view_wave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:contentDescription="@string/img"
+                android:src="@drawable/ic_sound_wave"
+                android:scaleType="fitXY"
+                android:visibility="@{viewModel.play ? View.VISIBLE : View.INVISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_back" />
 
-        <ImageView
-            android:id="@+id/image_view_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:padding="@dimen/_10sdp"
-            android:contentDescription="@string/img"
-            tools:src="@drawable/ic_pause"
-            android:onClick="@{() -> viewModel.playRadio(viewModel.radioChannels.get(currentPosition).url, viewModel.play, viewModel.soundUrl==viewModel.currentPlayingChannel)}"
-            android:src="@{viewModel.play &amp;&amp; viewModel.soundUrl==viewModel.currentPlayingChannel ? @drawable/ic_pause : @drawable/ic_play}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
 
-        <ImageView
-            android:id="@+id/image_view_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:contentDescription="@string/img"
-            android:src="@drawable/ic_go_next"
-            android:padding="@dimen/_10sdp"
-            android:onClick="@{() -> viewModel.onNextClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image_view_play"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
+            <TextView
+                android:id="@+id/text_view_name_channel"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_25sdp"
+                android:textColor="@color/color_6992AC"
+                android:textSize="@dimen/_16ssp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:text="@{viewModel.radioChannels.get(currentPosition).name}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_wave"
+                tools:text="إذاعة القرآن الكريم بصوت الشيخ احمد العجمي" />
 
-        <ImageView
-            android:id="@+id/image_view_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:contentDescription="@string/img"
-            android:src="@drawable/ic_go_previous"
-            android:onClick="@{() -> viewModel.onPreviousClicked()}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/image_view_play"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
+            <ImageView
+                android:id="@+id/image_view_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="@dimen/_10sdp"
+                android:contentDescription="@string/img"
+                tools:src="@drawable/ic_pause"
+                android:onClick="@{() -> viewModel.playRadio(viewModel.radioChannels.get(currentPosition).url, viewModel.play, viewModel.soundUrl==viewModel.currentPlayingChannel)}"
+                android:src="@{viewModel.play &amp;&amp; viewModel.soundUrl==viewModel.currentPlayingChannel ? @drawable/ic_pause : @drawable/ic_play}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/image_view_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:contentDescription="@string/img"
+                android:src="@drawable/ic_go_next"
+                android:padding="@dimen/_10sdp"
+                android:onClick="@{() -> viewModel.onNextClicked()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image_view_play"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
+
+            <ImageView
+                android:id="@+id/image_view_previous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:contentDescription="@string/img"
+                android:src="@drawable/ic_go_previous"
+                android:onClick="@{() -> viewModel.onPreviousClicked()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_view_play"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_name_channel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>
