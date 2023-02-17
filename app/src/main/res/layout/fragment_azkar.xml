@@ -10,253 +10,259 @@
             type="com.kamel.akra.app.presentation.azkar.AzkarViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background"
-        tools:context=".app.presentation.azkar.AzkarFragment">
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            tools:context=".app.presentation.azkar.AzkarFragment">
 
 
-        <ImageView
-            android:id="@+id/image_view_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:contentDescription="@string/img"
-            android:onClick="@{() -> viewModel.onBackClicked()}"
-            android:padding="@dimen/_10sdp"
-            android:src="@drawable/ic_back_arrow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/image_view_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:contentDescription="@string/img"
+                android:onClick="@{() -> viewModel.onBackClicked()}"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_view_pageName"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:text="@string/label_azkar"
-            android:textColor="@color/color_6992AC"
-            android:textSize="@dimen/_20ssp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
-            app:layout_constraintEnd_toStartOf="@+id/image_view_back"
-            app:layout_constraintTop_toTopOf="@+id/image_view_back" />
+            <TextView
+                android:id="@+id/text_view_pageName"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/label_azkar"
+                android:textColor="@color/color_6992AC"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintBottom_toBottomOf="@+id/image_view_back"
+                app:layout_constraintEnd_toStartOf="@+id/image_view_back"
+                app:layout_constraintTop_toTopOf="@+id/image_view_back" />
 
-        <TextView
-            android:id="@+id/text_view_evening"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(3)}"
-            android:text="@string/label_evening"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_evening"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_morning"
-            app:layout_constraintEnd_toStartOf="@+id/view_line1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_view_morning" />
+            <TextView
+                android:id="@+id/text_view_evening"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(3)}"
+                android:text="@string/label_evening"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_evening"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_morning"
+                app:layout_constraintEnd_toStartOf="@+id/view_line1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_morning" />
 
-        <View
-            android:id="@+id/view_line1"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_evening"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_morning"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_evening"
-            app:layout_constraintTop_toTopOf="@+id/text_view_evening" />
+            <View
+                android:id="@+id/view_line1"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_evening"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_morning"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_evening"
+                app:layout_constraintTop_toTopOf="@+id/text_view_evening" />
 
-        <TextView
-            android:id="@+id/text_view_morning"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:onClick="@{() -> viewModel.setGoToScreen(2)}"
-            android:text="@string/label_morning"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_morning"
-            app:layout_constraintEnd_toStartOf="@+id/view_line2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line1"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_back" />
+            <TextView
+                android:id="@+id/text_view_morning"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:onClick="@{() -> viewModel.setGoToScreen(2)}"
+                android:text="@string/label_morning"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_morning"
+                app:layout_constraintEnd_toStartOf="@+id/view_line2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line1"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_back" />
 
-        <TextView
-            android:id="@+id/text_view_tilawa"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(1)}"
-            android:text="@string/label_my_zekr"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:gravity="center"
-            app:drawableTopCompat="@drawable/ic_my_zekr"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_morning"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line2"
-            app:layout_constraintTop_toTopOf="@+id/text_view_morning" />
+            <TextView
+                android:id="@+id/text_view_tilawa"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(1)}"
+                android:text="@string/label_my_zekr"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                app:drawableTopCompat="@drawable/ic_my_zekr"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_morning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line2"
+                app:layout_constraintTop_toTopOf="@+id/text_view_morning" />
 
-        <View
-            android:id="@+id/view_line2"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_evening"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_morning"
-            app:layout_constraintTop_toTopOf="@+id/text_view_evening" />
+            <View
+                android:id="@+id/view_line2"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_evening"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_morning"
+                app:layout_constraintTop_toTopOf="@+id/text_view_evening" />
 
-        <TextView
-            android:id="@+id/text_view_doaa_nabwy"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(6)}"
-            android:text="@string/label_doaa_nabwy"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_azkar"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_sleep"
-            app:layout_constraintEnd_toStartOf="@+id/view_line1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_view_sleep" />
+            <TextView
+                android:id="@+id/text_view_doaa_nabwy"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(6)}"
+                android:text="@string/label_doaa_nabwy"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_azkar"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_sleep"
+                app:layout_constraintEnd_toStartOf="@+id/view_line1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_sleep" />
 
-        <View
-            android:id="@+id/view_line3"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_nabwy"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_morning"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_doaa_nabwy"
-            app:layout_constraintTop_toTopOf="@+id/text_view_doaa_nabwy" />
+            <View
+                android:id="@+id/view_line3"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_nabwy"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_morning"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_doaa_nabwy"
+                app:layout_constraintTop_toTopOf="@+id/text_view_doaa_nabwy" />
 
-        <TextView
-            android:id="@+id/text_view_sleep"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:onClick="@{() -> viewModel.setGoToScreen(5)}"
-            android:text="@string/label_sleeping"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_sleep"
-            app:layout_constraintEnd_toStartOf="@+id/view_line2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line1"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_morning" />
+            <TextView
+                android:id="@+id/text_view_sleep"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:onClick="@{() -> viewModel.setGoToScreen(5)}"
+                android:text="@string/label_sleeping"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_sleep"
+                app:layout_constraintEnd_toStartOf="@+id/view_line2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line1"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_morning" />
 
-        <TextView
-            android:id="@+id/text_view_wake_up"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(4)}"
-            android:text="@string/label_wake_up"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_12ssp"
-            android:gravity="center"
-            app:drawableTopCompat="@drawable/ic_wake_up"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_sleep"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line4"
-            app:layout_constraintTop_toTopOf="@+id/text_view_sleep" />
+            <TextView
+                android:id="@+id/text_view_wake_up"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(4)}"
+                android:text="@string/label_wake_up"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_12ssp"
+                android:gravity="center"
+                app:drawableTopCompat="@drawable/ic_wake_up"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_sleep"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line4"
+                app:layout_constraintTop_toTopOf="@+id/text_view_sleep" />
 
-        <View
-            android:id="@+id/view_line4"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_nabwy"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_morning"
-            app:layout_constraintTop_toTopOf="@+id/text_view_doaa_nabwy" />
+            <View
+                android:id="@+id/view_line4"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_nabwy"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_tilawa"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_morning"
+                app:layout_constraintTop_toTopOf="@+id/text_view_doaa_nabwy" />
 
-        <TextView
-            android:id="@+id/text_view_doaa_quran"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(9)}"
-            android:text="@string/label_doaa_quran"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_quraan"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_after_tasleem"
-            app:layout_constraintEnd_toStartOf="@+id/view_line1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/text_view_after_tasleem" />
+            <TextView
+                android:id="@+id/text_view_doaa_quran"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(9)}"
+                android:text="@string/label_doaa_quran"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_quraan"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_after_tasleem"
+                app:layout_constraintEnd_toStartOf="@+id/view_line1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_after_tasleem" />
 
-        <View
-            android:id="@+id/view_line5"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_after_tasleem"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_doaa_quran"
-            app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
+            <View
+                android:id="@+id/view_line5"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_after_tasleem"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_doaa_quran"
+                app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
 
-        <TextView
-            android:id="@+id/text_view_after_tasleem"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:onClick="@{() -> viewModel.setGoToScreen(8)}"
-            android:text="@string/label_after_tasleem"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            app:drawableTopCompat="@drawable/ic_after_tasleem"
-            app:layout_constraintEnd_toStartOf="@+id/view_line2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line1"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_sleep" />
+            <TextView
+                android:id="@+id/text_view_after_tasleem"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:onClick="@{() -> viewModel.setGoToScreen(8)}"
+                android:text="@string/label_after_tasleem"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                app:drawableTopCompat="@drawable/ic_after_tasleem"
+                app:layout_constraintEnd_toStartOf="@+id/view_line2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line1"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_sleep" />
 
-        <TextView
-            android:id="@+id/text_view_tasbeh"
-            style="@style/MyTextViewStyleRegular"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.setGoToScreen(7)}"
-            android:text="@string/label_tsabeh"
-            android:textColor="@color/color_707070"
-            android:textSize="@dimen/_14ssp"
-            android:gravity="center"
-            app:drawableTopCompat="@drawable/ic_mesbaha"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/view_line6"
-            app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
+            <TextView
+                android:id="@+id/text_view_tasbeh"
+                style="@style/MyTextViewStyleRegular"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.setGoToScreen(7)}"
+                android:text="@string/label_tsabeh"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/_14ssp"
+                android:gravity="center"
+                app:drawableTopCompat="@drawable/ic_mesbaha"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_line6"
+                app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
 
-        <View
-            android:id="@+id/view_line6"
-            android:layout_width="@dimen/_2sdp"
-            android:layout_height="0dp"
-            android:background="@color/color_B9B9B9"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_tasbeh"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text_view_after_tasleem"
-            app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
+            <View
+                android:id="@+id/view_line6"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="0dp"
+                android:background="@color/color_B9B9B9"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_doaa_quran"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_tasbeh"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/text_view_after_tasleem"
+                app:layout_constraintTop_toTopOf="@+id/text_view_doaa_quran" />
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -20,7 +20,7 @@ fun bindImageViewResourceId(imageView: ImageView, resourceId: Int) {
 
 
 
-@BindingAdapter("app:tint")
+@BindingAdapter("imageViewTint")
 fun ImageView.setImageTint(@ColorInt color: Int) {
     setColorFilter(color)
 }

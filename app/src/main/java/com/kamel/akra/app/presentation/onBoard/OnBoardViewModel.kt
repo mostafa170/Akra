@@ -42,4 +42,9 @@ class OnBoardViewModel @Inject constructor(): ViewModel() {
         }else if(currentItemIndex == 2)
             onSkipClicked()
     }
+
+    fun onBackClicked(){
+        currentItemIndex -= 1
+        _currentIntroItem.value = currentItemIndex
+    }
 }

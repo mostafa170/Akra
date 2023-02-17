@@ -41,13 +41,14 @@ class MainActivity : AppCompatActivity(), MainActivityEventsListener,
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.executePendingBindings()
-
-//        if(!SharedPreferencesData.isFirstOpen()){
-//            navController.navigate(R.id.homeFragment, null, navOptions)
-//        } else
-//            SharedPreferencesData.setIsFirstOpen(false)
-
         navController = this.findNavController(R.id.nav_host_fragment)
+
+
+        if(!SharedPreferencesData.isFirstOpen()){
+            navController.navigate(R.id.homeFragment, null, navOptions)
+        } else
+            SharedPreferencesData.setIsFirstOpen(false)
+
         navController.addOnDestinationChangedListener(this)
     }
 

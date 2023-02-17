@@ -10,20 +10,106 @@
             type="com.kamel.akra.app.presentation.onBoard.OnBoardViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".app.presentation.onBoard.OnBoardFragment">
+        android:fillViewport="true">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/pager_intros"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:overScrollMode="never"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            tools:context=".app.presentation.onBoard.OnBoardFragment">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager_intros"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                android:layout_marginBottom="@dimen/_20sdp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView_indicator02"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView_indicator01"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:background="@drawable/ic_dots"
+                android:backgroundTint="@{viewModel.currentIntroItem == 0 ? @color/color_6992AC : @color/color_707070}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_skip"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_indicator02"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView_indicator02"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:background="@drawable/ic_dots"
+                android:backgroundTint="@{viewModel.currentIntroItem == 1 ? @color/color_6992AC : @color/color_707070}"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_indicator01"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_indicator03"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView_indicator01"
+                app:layout_constraintTop_toTopOf="@+id/imageView_indicator01" />
+
+            <ImageView
+                android:id="@+id/imageView_indicator03"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/ic_dots"
+                android:backgroundTint="@{viewModel.currentIntroItem == 2 ? @color/color_6992AC : @color/color_707070}"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_indicator02"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView_indicator02"
+                app:layout_constraintTop_toTopOf="@+id/imageView_indicator02" />
+
+            <TextView
+                android:id="@+id/tv_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                style="@style/MyTextViewStyleMedium"
+                android:onClick="@{() -> viewModel.onSkipClicked()}"
+                android:padding="@dimen/_4sdp"
+                android:text="@string/label_skip"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="@{viewModel.currentIntroItem == 2 ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_intro"
+                android:visibility="@{viewModel.currentIntroItem == 0 ? View.INVISIBLE : View.VISIBLE}"
+                android:onClick="@{() -> viewModel.onBackClicked()}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_skip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_skip"
+                app:layout_constraintTop_toTopOf="@+id/tv_skip" />
+
+            <ImageView
+                android:id="@+id/iv_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow"
+                android:onClick="@{() -> viewModel.onNextClicked()}"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_skip"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="@+id/tv_skip" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

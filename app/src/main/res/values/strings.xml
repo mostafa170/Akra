@@ -14,6 +14,7 @@
     <string name="label_next_prayer_reminder">%s مُتبقية حسب توقيت موقعك الحالي</string>
     <string name="label_next_prayer_reminder_page"> يحين موعد الصلاه في %s</string>
     <string name="label_next_prayer_page">متبقى على %s</string>
+    <string name="label_skip">تجاهل</string>
 
     <string name="label_masbeha">المسبحة</string>
     <string name="label_quran">القرآن الكريم</string>
@@ -54,6 +55,15 @@
     <string name="label_hadeth_details">تفاصيل الحديث</string>
     <string name="label_hadeth_dsc">شرح الحديث</string>
     <string name="label_hadeth_dsc_full">يُحَاسِبُ الله -تعالى- الْخَلَائِقَ يوم القيامة، ثُمَّ يَقْضِى بينهم بعدله، ويبدأ من المظالم بالْأَهم، وبما أَنَّ الدِّمَاء هي أَعْظم وأَهَمُّ ما يكون من المظَالمِ فِإِنَّهَا أَوْلُ مَا يُقْضَى بِهِ منها في ذلك اليومِ العظيمِ، وهذا فيما بين العباد في المظالم، أما أعمال العبد فأول ما .",ينظر فيه الصلاة</string>
+
+    <string name="label_introWelcome1_title">القرآن الكريم كاملا بين يديك</string>
+    <string name="label_introWelcome2_title">وردك الكامل من الاذكار المختلفه</string>
+    <string name="label_introWelcome3_title">تحديد اتجاه القبلة ومواقيت الصلاة</string>
+
+    <string name="label_introWelcome1_content">القرآن الكريم مكتوبا ومسموعا</string>
+    <string name="label_introWelcome2_content">مكتبه متنوعه من الاذكار المختلفة</string>
+    <string name="label_introWelcome3_content">لتسهيل أداه عبادتك اليومية في مواعيدها</string>
+
 
 
 </resources>

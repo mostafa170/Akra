@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.kamel.akra.R
 import com.kamel.akra.databinding.FragmentOnboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,13 +27,13 @@ class OnBoardFragment : Fragment() {
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
-//        val listOf = listOf(
-//            IntroItem(getString(R.string.label_introWelcome1_title),getString(R.string.label_introWelcome1_content), R.drawable.ic_intro_img_1),
-//            IntroItem(getString(R.string.label_introWelcome2_title), getString(R.string.label_introWelcome2_content),R.drawable.ic_intro_img_2),
-//            IntroItem(getString(R.string.label_introWelcome3_title),getString(R.string.label_introWelcome3_content) ,R.drawable.ic_intro_img_3),
-//        )
+        val listOf = listOf(
+            IntroItem(getString(R.string.label_introWelcome1_title),getString(R.string.label_introWelcome1_content), R.drawable.ic_intro_1),
+            IntroItem(getString(R.string.label_introWelcome2_title), getString(R.string.label_introWelcome2_content),R.drawable.ic_intro_2),
+            IntroItem(getString(R.string.label_introWelcome3_title),getString(R.string.label_introWelcome3_content) ,R.drawable.ic_intro_3),
+        )
         val onBoardAdapter = OnBoardPagerAdapter()
-        //onBoardAdapter.submitList(listOf)
+        onBoardAdapter.submitList(listOf)
 
         binding.pagerIntros.apply {
             adapter = onBoardAdapter
