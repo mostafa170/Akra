@@ -7,7 +7,7 @@ plugins {
     id 'kotlin-kapt'
 }
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.kamel.akra"
@@ -43,7 +43,7 @@ dependencies {
 
     // UI
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // For responsive layouts
@@ -66,8 +66,8 @@ dependencies {
 
 
     // Navigation Component
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
 
     // Coroutines for getting off the UI thread
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
