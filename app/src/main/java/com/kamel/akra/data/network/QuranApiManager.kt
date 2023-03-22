@@ -3,6 +3,7 @@ package com.kamel.akra.data.network
 import android.util.Log
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.kamel.akra.data.utils.SharedPreferencesData
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,7 +25,6 @@ object QuranApiManager {
             val newRequest = chain.request().newBuilder()
                 .addHeader("Accept", "application/json")
                 .addHeader("charset", "UTF-8")
-                //.addHeader("lang", SharedPreferencesData.getLanguage() ?: DEFAULT_LANGUAGE)
                 //.addHeader("Authorization", "Bearer ${SharedPreferencesData.getAuthToken()}")
                 .build()
             chain.proceed(newRequest)

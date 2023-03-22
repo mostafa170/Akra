@@ -9,9 +9,9 @@ import com.kamel.akra.R
 import com.kamel.akra.app.presentation.azkar.azkarCategoryList.AzkarAdapter
 import com.kamel.akra.app.presentation.hadeth.HadethCatlogAdapter
 import com.kamel.akra.app.presentation.prayer.PrayersListAdapter
-import com.kamel.akra.domain.entities.HadethCategories
-import com.kamel.akra.domain.entities.Prayer
-import com.kamel.akra.domain.entities.Zekr
+import com.kamel.akra.app.presentation.quran.NameOfSurahAdapter
+import com.kamel.akra.app.presentation.tilawa.TilawaAdapter
+import com.kamel.akra.domain.entities.*
 
 @BindingAdapter("myImageResource")
 fun bindImageViewResourceId(imageView: ImageView, resourceId: Int) {
@@ -53,6 +53,23 @@ fun bindPrayersRecyclerView(recyclerView: RecyclerView, data: List<Prayer>?) {
     val adapter = recyclerView.adapter as PrayersListAdapter
     adapter.submitList(data)
 }
+
+@BindingAdapter("nameOfSurahItems")
+fun bindNameOfSurahItemsRecyclerView(recyclerView: RecyclerView, data: List<Quran>?) {
+    recyclerView.adapter?.let {
+        val adapter = it as NameOfSurahAdapter
+        adapter.submitList(data)
+    }
+}
+
+@BindingAdapter("surahAudioItems")
+fun bindSurahAudioItemsRecyclerView(recyclerView: RecyclerView, data: List<QuranAudio>?) {
+    recyclerView.adapter?.let {
+        val adapter = it as TilawaAdapter
+        adapter.submitList(data)
+    }
+}
+
 
 
 

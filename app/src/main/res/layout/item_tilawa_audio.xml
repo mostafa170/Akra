@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="nameOfSurah"
+            type="com.kamel.akra.domain.entities.QuranAudio" />
+        <variable
+            name="onClickListener"
+            type="com.kamel.akra.app.presentation.tilawa.OnSurahAudioClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> onClickListener.onClick(nameOfSurah)}">
+
+        <TextView
+            android:id="@+id/number_surah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_14ssp"
+            style="@style/MyTextViewStyleRegular"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/_16ssp"
+            android:text="@{String.valueOf(nameOfSurah.soraNumber)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+        <ImageView
+            android:id="@+id/image_view_mecca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:src="@{nameOfSurah.mecca ? @drawable/ic_makkah : @drawable/ic_madina}"
+            app:layout_constraintBottom_toBottomOf="@+id/number_surah"
+            app:layout_constraintEnd_toStartOf="@+id/number_surah"
+            app:layout_constraintTop_toTopOf="@+id/number_surah"
+            tools:src="@drawable/ic_madina" />
+
+        <TextView
+            android:id="@+id/name_surah"
+            style="@style/MyTextViewStyleRegular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/_16ssp"
+            android:text="@{nameOfSurah.soraName}"
+            app:layout_constraintBottom_toBottomOf="@+id/number_surah"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_mecca"
+            app:layout_constraintStart_toEndOf="@+id/image_view_arrow"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="سورة الفاتحة" />
+
+        <ImageView
+            android:id="@+id/image_view_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="@+id/number_surah"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/number_surah"
+            tools:src="@drawable/ic_back_arrow" />
+
+        <View
+            android:id="@+id/view_line1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:background="@color/color_B9B9B9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/number_surah"
+            app:layout_constraintStart_toStartOf="@+id/image_view_arrow"
+            app:layout_constraintTop_toBottomOf="@+id/number_surah" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

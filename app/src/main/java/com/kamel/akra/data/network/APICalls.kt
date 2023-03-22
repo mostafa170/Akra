@@ -23,12 +23,11 @@ interface APICalls {
 //        @Query("timeformat") timeformat: String?
 //    ): Call<PrayerTimeResponse?>?
 //
-//    @FormUrlEncoded
-//    @POST("QuranShared.php")
-//    fun getElmoshafListan(
-//        @Header("lang") lang: String?,
-//        @Field("reader_id") reader_id: Int
-//    ): Call<ResponseQuran?>?
+    @FormUrlEncoded
+    @POST("QuranShared.php")
+    fun getQuranListenAsync(
+        @Field("reader_id") reader_id: Int
+    ): Deferred<QuranListenResponse>
 
     @GET("v1/calendar?")
     fun downloadMonthPrayersAsync(@QueryMap queries: Map<String, String>): Deferred<PrayersSuccessModel>

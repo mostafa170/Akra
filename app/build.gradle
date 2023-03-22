@@ -116,6 +116,10 @@ dependencies {
     kapt "androidx.room:room-compiler:2.5.0-beta01"
     kapt "androidx.lifecycle:lifecycle-compiler:2.6.0-alpha03"
 
+    // pdf view
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+
+
 
 
 }
